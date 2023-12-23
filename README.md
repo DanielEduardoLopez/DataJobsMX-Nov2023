@@ -25,7 +25,7 @@ ____
 
 ____
 ### **1. Introduction** <a class="anchor" id="intro"></a>
-With the emergence of the big data, new jobs have appeared demanding new sets of skills and expertise for extracting value from data (Axis Talent, 2020):
+With the emergence of the big data, new jobs have appeared demanding new sets of skills and expertise for extracting value from data (Axis Talent, 2020; ai-jobs.net, 2023):
 
 - Business Analysts (BA)
 - Business Intelligence Analysts (BI)
@@ -84,8 +84,9 @@ Pending.
 ___
 ### **9. Partial Bibliography** <a class="anchor" id="bibliography"></a>
 
-- **Axis Talent. (2020).** *The Ecosystem of Data Jobs - Making sense of the Data Job Market*. Retrieved from Axis Talent: https://www.axistalent.io/blog/the-ecosystem-of-data-jobs-making-sense-of-the-data-job-market
-- **Rollins, J. B. (2015).** *Metodología Fundamental para la Ciencia de Datos*. Somers: IBM Corporation. Retrieved from https://www.ibm.com/downloads/cas/WKK9DX51
+- **ai-jobs.net (2023).** *Machine Learning Engineer vs. Business Intelligence Data Analyst*. https://ai-jobs.net/insights/machine-learning-engineer-vs-business-intelligence-data-analyst/
+- **Axis Talent. (2020).** *The Ecosystem of Data Jobs - Making sense of the Data Job Market*. https://www.axistalent.io/blog/the-ecosystem-of-data-jobs-making-sense-of-the-data-job-market
+- **Rollins, J. B. (2015).** *Metodología Fundamental para la Ciencia de Datos*. Somers: IBM Corporation. https://www.ibm.com/downloads/cas/WKK9DX51
 
 ___
 ### **10. Description of Files in Repository** <a class="anchor" id="files"></a>
