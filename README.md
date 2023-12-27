@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="Images/Header.png?raw=true" width=80% height=80%>
+	<img src="Figures/Header.png?raw=true" width=80% height=80%>
 </p>
 
 # Data Jobs Salaries in Mexico in November 2023
@@ -93,8 +93,8 @@ ___
 
 File | Description
 :--- | :---
-1_DataJobs-Nov2023-MX_DataCollection.ipynb | Jupyter notebook for collecting the data through the web scraping.
-2_DataJobs-Nov2023-MX_DataAnalysis.ipynb | Jupyter Notebook for performing the data exploration, preparation, visualization and statistical analysis.
+1_DataJobsMX_Nov2023_DataCollection.ipynb | Jupyter notebook for collecting the data through the web scraping.
+2_DataJobsMX_Nov2023_DataAnalysis.ipynb | Jupyter Notebook for performing the data exploration, preparation, visualization and statistical analysis.
 Dataset_processed.csv | CSV file with the cleaned dataset.
 Dataset_raw.csv | CSV file with the raw data collected from web scraping.
 
