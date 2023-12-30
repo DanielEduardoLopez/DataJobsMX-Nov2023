@@ -145,7 +145,7 @@ Data Quality Sr. Analyst,Data Analyst,Banamex,Ciudad de México,,,
 Data Analytics Intmd Analyst - C11,Data Analyst,Banamex,Ciudad de México,,,
 Data Quality Intermediate Analyst - C11,Data Analyst,Banamex,Ciudad de México,,,
 Info Sec Tech Lead Analyst – Mainframe Data Protection.,Data Analyst,Banamex,Ciudad de México,,,
-Business Intelligence Intermediate Analyst,Business Intelligence Analyst,Banamex,Ciudad de México,,,
+Business Intelligence Intermediate Analyst,BI Analyst,Banamex,Ciudad de México,,,
 Data analyst,Data Analyst,Johnson Controls,Nuevo León,45000.0,55000.0,50000.0
 Data analyst,Data Analyst,Satellite Teams S De R...,Ciudad de México,18000.0,24000.0,21000.0
 Data analyst,Data Analyst,Tata Consultancy Servi...,Ciudad de México,,,
@@ -181,8 +181,8 @@ Data Scientist Jr (C10),Data Scientist,Banamex,Ciudad de México,,,
 Data Scientist Jr,Data Scientist,Banamex,Ciudad de México,,,
 Intern Data Scientist,Data Scientist,Banamex,Ciudad de México,,,
 Expert Data Scientist,Data Scientist,General De Seguros,Ciudad de México,,,
-"Business Intelligence Program Manager, Advanced English",Business Intelligence Analyst,Randstad,Ciudad de México,60000.0,80000.0,70000.0
-MACHINE LEARNING ENGINEER,Machine Learning Engineer,Betterware De Mexico S...,Jalisco,,,
+"Business Intelligence Program Manager, Advanced English",BI Analyst,Randstad,Ciudad de México,60000.0,80000.0,70000.0
+MACHINE LEARNING ENGINEER,ML Engineer,Betterware De Mexico S...,Jalisco,,,
 Científico de Datos,Data Scientist,Grupo Sanborns,Ciudad de México,,,
 Científico de datos,Data Scientist,Confidential,Ciudad de México,39000.0,39000.0,39000.0
 Científico de Datos,Data Scientist,Ecosistemex S. De R.L....,Ciudad de México,90000.0,90000.0,90000.0
@@ -216,12 +216,12 @@ Senior Data Scientist,Data Scientist,Michael Page,Remote/NA,,,
 EGRESADAS TI Ing Actuaria para Data Engineer Data Scientist,Data Scientist,Capgemini México,Remote/NA,12000.0,15000.0,13500.0
 DATA ENGINEER O ARQUITECTO DE DATOS AWS,Data Engineer,Indra,Ciudad de México,,,
 INGENIERO SR DE DATOS,Data Engineer,Fundación Rafael Donde...,Yucatán,,,
-Coordinador DWH e inteligencia de negocios,Business Intelligence Analyst,Confidential,Jalisco,,,
+Coordinador DWH e inteligencia de negocios,BI Analyst,Confidential,Jalisco,,,
 INGENIERO DE DATOS,Data Engineer,Hitss,Ciudad de México,32000.0,33000.0,32500.0
 Data Science,Data Scientist,Omnicom Media Directio...,Ciudad de México,,,
 Becario Business Analyst -Naucalpan,Business Analyst,Sociedad Nacional Prom...,Estado de México,6000.0,6000.0,6000.0
 Coordinador DataScience,Data Scientist,"Farmacias Del Ahorro, ...",Nuevo León,,,
-Business intelligence analyst,Business Intelligence Analyst,"Stefanini México, S.A....",Ciudad de México,35000.0,39000.0,37000.0
+Business intelligence analyst,BI Analyst,"Stefanini México, S.A....",Ciudad de México,35000.0,39000.0,37000.0
 Data engineer (100% Remoto / Proyecto de 4 meses),Data Engineer,"Gonet, S.A. De C.V.",Ciudad de México,,,
 Work From Home Data Engineer / Ref. 0960E,Data Engineer,Bairesdev Llc / (Tax I...,Ciudad de México,,,
 Trabajo Desde Casa Ingeniero de Datos / Ref. 0339S,Data Engineer,Bairesdev Llc / (Tax I...,Jalisco,,,
@@ -288,8 +288,8 @@ Data engineer,Data Engineer,Everis,Remote/NA,38000.0,43000.0,40500.0
 Data engineer (100%Home Office - Freelance),Data Engineer,"Gonet, S.A. De C.V.",Ciudad de México,,,
 Data engineer,Data Engineer,Capgemini México,Nuevo León,,,
 Big Data Engineer Sr - Inglés,Data Engineer,Servicios Axity Mexico...,Ciudad de México,55000.0,60000.0,57500.0
-Lider de Inteligencia de Negocios,Business Intelligence Analyst,Aliat Universidades,Ciudad de México,25000.0,30000.0,27500.0
-BI ANALYST,Business Intelligence Analyst,Confidential,Yucatán,20000.0,25000.0,22500.0
+Lider de Inteligencia de Negocios,BI Analyst,Aliat Universidades,Ciudad de México,25000.0,30000.0,27500.0
+BI ANALYST,BI Analyst,Confidential,Yucatán,20000.0,25000.0,22500.0
 Ingeniero de datos,Data Engineer,Reclutamiento En Tecno...,Ciudad de México,35000.0,40000.0,37500.0
 Ingeniero de Datos,Data Engineer,Farmacéuticos Maypo,Ciudad de México,,,
 Ingeniero de datos,Data Engineer,Confidential,Ciudad de México,40000.0,50000.0,45000.0
@@ -357,7 +357,7 @@ Procurement Data Engineer III,Data Engineer,Johnson Controls,Nuevo León,,,
 Data Engineer with Fivetran developer,Data Engineer,"Enterprise Solutions, ...",Remote/NA,70000.0,80000.0,75000.0
 Data Architect,Data Architect,"Azka It Consulting, Sa...",Ciudad de México,,,
 Arquitecto de Datos /ING. BI,Data Architect,Bancoppel,Sinaloa,,,
-COORDINADOR BUSINESS INTELLIGENCE,Business Intelligence Analyst,Servicios Administrati...,Jalisco,30000.0,30000.0,30000.0
+COORDINADOR BUSINESS INTELLIGENCE,BI Analyst,Servicios Administrati...,Jalisco,30000.0,30000.0,30000.0
 Data Visualization Engineer,Data Engineer,Softtek,Remote/NA,,,
 Engineer DATA Base engineer,Data Engineer,Confidential,Estado de México,18000.0,20000.0,19000.0
 Data QA Engineer,Data Engineer,Michael Page,Remote/NA,,,
@@ -395,9 +395,9 @@ Data Analyst Pipeline,Data Analyst,Michelin,Oaxaca,,,
 Incident Management Analyst - Enterprise Business Planning (EBP),Business Analyst,Hp Development Company...,Jalisco,,,
 Data Engineer Job,Data Engineer,Paccar,Baja California,,,
 Analista Senior de Artista de Datos,Data Analyst,"Herdez, S.A. De C.V.",Ciudad de México,31396.0,31396.0,31396.0
-Analista de inteligencia de negocios,Business Intelligence Analyst,Capacidades Humanas Y ...,Ciudad de México,17000.0,18000.0,17500.0
-Analista de mejora continua Bienes Raíces,Business Intelligence Analyst,Nueva Wal Mart De Mexi...,Ciudad de México,29000.0,37000.0,33000.0
-Analista Contabilidad general,Business Intelligence Analyst,Banorte,Ciudad de México,17800.0,17800.0,17800.0
+Analista de inteligencia de negocios,BI Analyst,Capacidades Humanas Y ...,Ciudad de México,17000.0,18000.0,17500.0
+Analista de mejora continua Bienes Raíces,BI Analyst,Nueva Wal Mart De Mexi...,Ciudad de México,29000.0,37000.0,33000.0
+Analista Contabilidad general,BI Analyst,Banorte,Ciudad de México,17800.0,17800.0,17800.0
 IT Business Sr Analyst,Business Analyst,Banamex,Ciudad de México,,,
 Business Senior Analyst C12,Business Analyst,Banamex,Ciudad de México,,,
 Business analyst,Business Analyst,Confidential,Remote/NA,,,
@@ -413,7 +413,7 @@ IT Business Analyst Jr.,Business Analyst,Banamex,Ciudad de México,,,
 Becario Business Analyst -Naucalpan,Business Analyst,Sociedad Nacional Prom...,Estado de México,,,
 Business Risk Analyst-C11,Business Analyst,Banamex,Ciudad de México,,,
 Business Process Analyst Back Office,Business Analyst,Confidential,Nuevo León,,,
-Business Intelligence Analyst and Tableau,Business Intelligence Analyst,Cognizant Technology S...,Ciudad de México,,,
+Business Intelligence Analyst and Tableau,BI Analyst,Cognizant Technology S...,Ciudad de México,,,
 Business & Technology Analyst - Auxiliar de sistemas,Business Analyst,Confidential,Yucatán,,,
 Business Lead analyst - Space & Occupancy Manager,Business Analyst,Banamex,Ciudad de México,,,
 "Analyst, IT Business (Workday)",Business Analyst,Confidential,Ciudad de México,,,
@@ -442,10 +442,10 @@ Business analyst jr.,Business Analyst,Avantare Consultores,Ciudad de México,250
 Business Analyst Pr,Business Analyst,Softtek,Ciudad de México,,,
 Business Analyst MKT,Business Analyst,Sky,Ciudad de México,15000.0,20000.0,17500.0
 Senior Business Analyst,Business Analyst,Zegovia Rh Sa De Cv,Ciudad de México,45000.0,50000.0,47500.0
-Business analyst bilingüe,Business Intelligence Analyst,Ids Comercial,Ciudad de México,42000.0,42000.0,42000.0
+Business analyst bilingüe,BI Analyst,Ids Comercial,Ciudad de México,42000.0,42000.0,42000.0
 Business Analyst Oracle,Business Analyst,Confidential,Ciudad de México,,,
 Technical Business Analyst,Business Analyst,"Wipro Technologies, S....",Ciudad de México,40000.0,45000.0,42500.0
-Business Analyst BI,Business Intelligence Analyst,Softtek,Ciudad de México,,,
+Business Analyst BI,BI Analyst,Softtek,Ciudad de México,,,
 Business analyst - IT,Business Analyst,Softtek,Aguascalientes,,,
 Oracle Business Analyst I,Business Analyst,"Manpower, S.A. De C.V.",San Luis Potosí,60000.0,65000.0,62500.0
 Business analyst with Frontend,Business Analyst,"Infosys Technologies, ...",Ciudad de México,,,
@@ -464,18 +464,18 @@ Work From Home Business Analyst / Ref. 0031E,Business Analyst,Bairesdev Llc / (T
 Work From Home Agile Business Analyst / Ref. 0031E,Business Analyst,Bairesdev Llc / (Tax I...,Jalisco,,,
 Work From Home Agile Business Analyst / Ref. 0031E,Business Analyst,Bairesdev Llc / (Tax I...,Ciudad de México,,,
 Business system analyst,Business Analyst,Compucom Gsc,Ciudad de México,17000.0,19000.0,18000.0
-Business intelligence analyst,Business Intelligence Analyst,Shelter Del Pacifico N...,Baja California,28000.0,34000.0,31000.0
+Business intelligence analyst,BI Analyst,Shelter Del Pacifico N...,Baja California,28000.0,34000.0,31000.0
 SC Business Support Analyst,Business Analyst,Pepsico División Foods,Remote/NA,,,
 Sr. Business Systems Analyst,Business Analyst,Confidential,Jalisco,60000.0,75000.0,67500.0
-Business Intelligence Analyst Jr.,Business Intelligence Analyst,Pepsico División Foods,Remote/NA,,,
+Business Intelligence Analyst Jr.,BI Analyst,Pepsico División Foods,Remote/NA,,,
 Business Developer Analyst (Desarrollador de Aplicaciones ),Business Analyst,Electro Componentes De...,Chihuahua,,,
 "Analyst, Business Analysis",Business Analyst,Evo Payments Mexico. S...,Ciudad de México,,,
 Work From Home Business Management Analyst / Ref. 0031E,Business Analyst,Bairesdev Llc / (Tax I...,Jalisco,,,
 Work From Home Business Management Analyst / Ref. 0031E,Business Analyst,Bairesdev Llc / (Tax I...,Ciudad de México,,,
-Work From Home Business Intelligence Analyst / Ref. 0078E,Business Intelligence Analyst,Bairesdev Llc / (Tax I...,Jalisco,,,
-Work From Home Business Intelligence Analyst / Ref. 0078E,Business Intelligence Analyst,Bairesdev Llc / (Tax I...,Ciudad de México,,,
+Work From Home Business Intelligence Analyst / Ref. 0078E,BI Analyst,Bairesdev Llc / (Tax I...,Jalisco,,,
+Work From Home Business Intelligence Analyst / Ref. 0078E,BI Analyst,Bairesdev Llc / (Tax I...,Ciudad de México,,,
 Liquidity Business Client Support Analyst,Business Analyst,"Manpower, S.A. De C.V.",Ciudad de México,,,
-"Analyst, SAP Business Intelligence",Business Intelligence Analyst,Adecco,Remote/NA,50000.0,60000.0,55000.0
+"Analyst, SAP Business Intelligence",BI Analyst,Adecco,Remote/NA,50000.0,60000.0,55000.0
 Work From Home Business Development Operations Analyst,Business Analyst,Bairesdev Llc / (Tax I...,Jalisco,,,
 WorkFromHome Business Dev Operations Analyst / Ref.0097E,Business Analyst,Bairesdev Llc / (Tax I...,Nuevo León,,,
 WorkFromHome Business Dev Operations Analyst / Ref.0097E,Business Analyst,Bairesdev Llc / (Tax I...,Estado de México,,,
@@ -494,71 +494,71 @@ Trabajo Desde Casa Analista de Negocios / Ref. 0031S,Business Analyst,Bairesdev 
 Trabajo Desde Casa Analista de Negocios con Agile / Ref. 003,Business Analyst,Bairesdev Llc / (Tax I...,Jalisco,,,
 Trabajo Desde Casa Analista de Negocios con Agile,Business Analyst,Bairesdev Llc / (Tax I...,Ciudad de México,,,
 Trabajo Desde Casa Analista de Negocios / Ref. 0031S,Business Analyst,Bairesdev Llc / (Tax I...,Ciudad de México,,,
-ANALISTA DE NEGOCIOS Y RENTABILIDAD (PRECIOS E INGRESOS),Business Intelligence Analyst,Raul Barragán De La Cruz,Yucatán,25000.0,35000.0,30000.0
+ANALISTA DE NEGOCIOS Y RENTABILIDAD (PRECIOS E INGRESOS),BI Analyst,Raul Barragán De La Cruz,Yucatán,25000.0,35000.0,30000.0
 Analista de Negocios TI,Business Analyst,E-Global,Ciudad de México,32000.0,35000.0,33500.0
 ANALISTA DE NEGOCIOS TI,Business Analyst,Totaltech,Yucatán,45000.0,55000.0,50000.0
-Analista BI,Business Intelligence Analyst,Confidential,Ciudad de México,27000.0,29000.0,28000.0
-Analista de inteligencia de negocios Inmobiliarios,Business Intelligence Analyst,Nueva Wal Mart De Mexi...,Ciudad de México,29000.0,37000.0,33000.0
-BI Analyst,Business Intelligence Analyst,Johnson Controls,Nuevo León,30000.0,40000.0,35000.0
-IT BI Reporting Analyst,Business Intelligence Analyst,Gm Financial.,Nuevo León,23000.0,24000.0,23500.0
-Analista de BI,Business Intelligence Analyst,Industrializadora Oleo...,Jalisco,16000.0,18000.0,17000.0
-Analista de BI,Business Intelligence Analyst,Orag Mexico Consulting,Ciudad de México,25000.0,25001.0,25000.5
-Analista BI,Business Intelligence Analyst,Marketing & Promotion,Ciudad de México,22000.0,24000.0,23000.0
-Analista de inteligencia de negocios,Business Intelligence Analyst,"Pilgrim´S Pride, S De ...",Querétaro,,,
-ANALISTA DE BI,Business Intelligence Analyst,Grupo Salinas,Ciudad de México,,,
-ANALISTA BI,Business Intelligence Analyst,Grupo Salinas,Ciudad de México,,,
-Consultor Analista BI,Business Intelligence Analyst,Bindik Soluciones,Ciudad de México,25000.0,30000.0,27500.0
+Analista BI,BI Analyst,Confidential,Ciudad de México,27000.0,29000.0,28000.0
+Analista de inteligencia de negocios Inmobiliarios,BI Analyst,Nueva Wal Mart De Mexi...,Ciudad de México,29000.0,37000.0,33000.0
+BI Analyst,BI Analyst,Johnson Controls,Nuevo León,30000.0,40000.0,35000.0
+IT BI Reporting Analyst,BI Analyst,Gm Financial.,Nuevo León,23000.0,24000.0,23500.0
+Analista de BI,BI Analyst,Industrializadora Oleo...,Jalisco,16000.0,18000.0,17000.0
+Analista de BI,BI Analyst,Orag Mexico Consulting,Ciudad de México,25000.0,25001.0,25000.5
+Analista BI,BI Analyst,Marketing & Promotion,Ciudad de México,22000.0,24000.0,23000.0
+Analista de inteligencia de negocios,BI Analyst,"Pilgrim´S Pride, S De ...",Querétaro,,,
+ANALISTA DE BI,BI Analyst,Grupo Salinas,Ciudad de México,,,
+ANALISTA BI,BI Analyst,Grupo Salinas,Ciudad de México,,,
+Consultor Analista BI,BI Analyst,Bindik Soluciones,Ciudad de México,25000.0,30000.0,27500.0
 Analista de Inteligenica de Negocios,Business Analyst,Test And Qa Corporation,Ciudad de México,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Grabjobs,Chihuahua,,,
+Business Intelligence Analyst,BI Analyst,Grabjobs,Chihuahua,,,
 Analista de datos con inglés avanzado,Data Analyst,Unisys,Ciudad de México,,,
-Job Title IT BI Reporting Analyst,Business Intelligence Analyst,Gm Financial,Nuevo León,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Bombardier Recreationa...,Querétaro,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Bombardier Recreationa...,Chihuahua,,,
-Sr Business Intelligence Analyst,Business Intelligence Analyst,Cbre,Chihuahua,,,
-Sr Business Intelligence Analyst,Business Intelligence Analyst,Cbre Apac ,Chihuahua,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Jabil,Chihuahua,,,
-"Business Intelligence Analyst, Marketing (Colombia Remote)",Business Intelligence Analyst,Turnitin,Ciudad de México,,,
-"Business Intelligence Analyst, Marketing (Mexico Remote)",Business Intelligence Analyst,Turnitin,Ciudad de México,,,
-Business Intelligence Intermediate Analyst,Business Intelligence Analyst,Citigroup,Ciudad de México,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Cognizant Technology S...,San Luis Potosí,,,
+Job Title IT BI Reporting Analyst,BI Analyst,Gm Financial,Nuevo León,,,
+Business Intelligence Analyst,BI Analyst,Bombardier Recreationa...,Querétaro,,,
+Business Intelligence Analyst,BI Analyst,Bombardier Recreationa...,Chihuahua,,,
+Sr Business Intelligence Analyst,BI Analyst,Cbre,Chihuahua,,,
+Sr Business Intelligence Analyst,BI Analyst,Cbre Apac ,Chihuahua,,,
+Business Intelligence Analyst,BI Analyst,Jabil,Chihuahua,,,
+"Business Intelligence Analyst, Marketing (Colombia Remote)",BI Analyst,Turnitin,Ciudad de México,,,
+"Business Intelligence Analyst, Marketing (Mexico Remote)",BI Analyst,Turnitin,Ciudad de México,,,
+Business Intelligence Intermediate Analyst,BI Analyst,Citigroup,Ciudad de México,,,
+Business Intelligence Analyst,BI Analyst,Cognizant Technology S...,San Luis Potosí,,,
 Analista de datos con inglés avanzado,Data Analyst,Unisys,Ciudad de México,,,
-Sr Finance BI Analyst,Business Intelligence Analyst,Johnson Controls,Oaxaca,,,
+Sr Finance BI Analyst,BI Analyst,Johnson Controls,Oaxaca,,,
 Sr Programmer Analyst / BI ENGINEER - ALLDATA,Data Analyst,Autozone,Chihuahua,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Brp,Chihuahua,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Nestle Operational Ser...,Ciudad de México,,,
-BUSINESS INTELLIGENCE ANALYST II,Business Intelligence Analyst,Te Connectivity,Sonora,,,
-Sr Business Intelligence Analyst,Business Intelligence Analyst,Cbre,Chihuahua,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Jabil Inc.,Chihuahua,,,
-ANALISTA BI,Business Intelligence Analyst,Banco Compartamos,Remote/NA,,,
-Business Intelligence Analyst,Business Intelligence Analyst,Aviva,Ciudad de México,,,
-"Business Intelligence Analyst, Marketing (Colombia Remote)",Business Intelligence Analyst,Jobs For Humanity,Ciudad de México,,,
-"Business Intelligence Analyst, Marketing (Mexico Remote)",Business Intelligence Analyst,Jobs For Humanity,Ciudad de México,,,
-"Business Intelligence Analyst, Marketing (Mexico Remote)",Business Intelligence Analyst,Turnitin Llc,Ciudad de México,,,
-Business Intelligence Intermediate Analyst,Business Intelligence Analyst,Citigroup Inc.,Ciudad de México,,,
+Business Intelligence Analyst,BI Analyst,Brp,Chihuahua,,,
+Business Intelligence Analyst,BI Analyst,Nestle Operational Ser...,Ciudad de México,,,
+BUSINESS INTELLIGENCE ANALYST II,BI Analyst,Te Connectivity,Sonora,,,
+Sr Business Intelligence Analyst,BI Analyst,Cbre,Chihuahua,,,
+Business Intelligence Analyst,BI Analyst,Jabil Inc.,Chihuahua,,,
+ANALISTA BI,BI Analyst,Banco Compartamos,Remote/NA,,,
+Business Intelligence Analyst,BI Analyst,Aviva,Ciudad de México,,,
+"Business Intelligence Analyst, Marketing (Colombia Remote)",BI Analyst,Jobs For Humanity,Ciudad de México,,,
+"Business Intelligence Analyst, Marketing (Mexico Remote)",BI Analyst,Jobs For Humanity,Ciudad de México,,,
+"Business Intelligence Analyst, Marketing (Mexico Remote)",BI Analyst,Turnitin Llc,Ciudad de México,,,
+Business Intelligence Intermediate Analyst,BI Analyst,Citigroup Inc.,Ciudad de México,,,
 Data Engineer 2 (Games),Data Engineer,Lionbridge,Ciudad de México,,,
 EY - GDS Consulting - GDS Data-Analytics - Adobe Data Analyst - Senior,Data Analyst,Ey,Ciudad de México,,,
 EY - GDS Consulting - GDS Data-Analytics - Adobe Data Analyst - Senior 1,Data Analyst,Ey,Ciudad de México,,,
 EY- GDS Consulting - GDS Data - Analytics Data Engineer - Senior 1,Data Engineer,Ey,Ciudad de México,,,
-Business intelligence,Business Intelligence Analyst,Sye Software S.A. De C...,Ciudad de México,,,
-Business intelligence,Business Intelligence Analyst,Grupo Salinas,Ciudad de México,,,
-Business intelligence,Business Intelligence Analyst,Fundación Rafael Donde...,Ciudad de México,,,
-Business Intelligence Intern,Business Intelligence Analyst,Estee Lauder Cosmeticos,Ciudad de México,,,
-Analista Business Intelligence,Business Intelligence Analyst,"At&T, México",Ciudad de México,,,
-Coordinador de Business Intelligence,Business Intelligence Analyst,Industrias Tuk Sa De Cv,Nuevo León,,,
-Coordinador Business Intelligence,Business Intelligence Analyst,Confidential,Puebla,,,
-Analista Business Intelligence,Business Intelligence Analyst,Nueva Wal Mart De Mexi...,Ciudad de México,20000.0,25000.0,22500.0
-Becario Business Intelligence – Polanco,Business Intelligence Analyst,Sociedad Nacional Prom...,Ciudad de México,6500.0,6500.0,6500.0
-Analista business intelligence Jr.,Business Intelligence Analyst,Servicios Broxel,Ciudad de México,,,
-Business Intelligence - Marketing estratégico,Business Intelligence Analyst,Confidential,Guanajuato,16000.0,17000.0,16500.0
-Analista Sr Business Intelligence,Business Intelligence Analyst,Confidential,Ciudad de México,,,
-"Consultor Power BI, Business Intelligence",Business Intelligence Analyst,"Cci, Soporte Y Asesori...",Estado de México,30000.0,35000.0,32500.0
-Desarrollador de Inteligencia de Negocios,Business Intelligence Analyst,Omex Alimentaria Sa De...,Jalisco,,,
-Analista de Información BI,Business Intelligence Analyst,Confidential,Nuevo León,25000.0,29300.0,27150.0
-Analista en Dashboards (BI),Business Intelligence Analyst,Confidential,Ciudad de México,14000.0,14000.0,14000.0
-Profesor Tiempo Completo Inteligencia de Negocios,Business Intelligence Analyst,Universidad Popular Au...,Puebla,,,
-Azure Machine Learning – Technical Support Engineer,Machine Learning Engineer,"Enterprise Solutions, ...",Jalisco,60000.0,70000.0,65000.0
+Business intelligence,BI Analyst,Sye Software S.A. De C...,Ciudad de México,,,
+Business intelligence,BI Analyst,Grupo Salinas,Ciudad de México,,,
+Business intelligence,BI Analyst,Fundación Rafael Donde...,Ciudad de México,,,
+Business Intelligence Intern,BI Analyst,Estee Lauder Cosmeticos,Ciudad de México,,,
+Analista Business Intelligence,BI Analyst,"At&T, México",Ciudad de México,,,
+Coordinador de Business Intelligence,BI Analyst,Industrias Tuk Sa De Cv,Nuevo León,,,
+Coordinador Business Intelligence,BI Analyst,Confidential,Puebla,,,
+Analista Business Intelligence,BI Analyst,Nueva Wal Mart De Mexi...,Ciudad de México,20000.0,25000.0,22500.0
+Becario Business Intelligence – Polanco,BI Analyst,Sociedad Nacional Prom...,Ciudad de México,6500.0,6500.0,6500.0
+Analista business intelligence Jr.,BI Analyst,Servicios Broxel,Ciudad de México,,,
+Business Intelligence - Marketing estratégico,BI Analyst,Confidential,Guanajuato,16000.0,17000.0,16500.0
+Analista Sr Business Intelligence,BI Analyst,Confidential,Ciudad de México,,,
+"Consultor Power BI, Business Intelligence",BI Analyst,"Cci, Soporte Y Asesori...",Estado de México,30000.0,35000.0,32500.0
+Desarrollador de Inteligencia de Negocios,BI Analyst,Omex Alimentaria Sa De...,Jalisco,,,
+Analista de Información BI,BI Analyst,Confidential,Nuevo León,25000.0,29300.0,27150.0
+Analista en Dashboards (BI),BI Analyst,Confidential,Ciudad de México,14000.0,14000.0,14000.0
+Profesor Tiempo Completo Inteligencia de Negocios,BI Analyst,Universidad Popular Au...,Puebla,,,
+Azure Machine Learning – Technical Support Engineer,ML Engineer,"Enterprise Solutions, ...",Jalisco,60000.0,70000.0,65000.0
 Data science,Data Scientist,Confidential,Ciudad de México,,,
 Data science,Data Scientist,Im It Services S.A. De...,Nuevo León,,,
-Machine Learning Engineer,Machine Learning Engineer,Confidential,Ciudad de México,,,
-Work From Home Machine Learning Engineer / Ref. 0129E,Machine Learning Engineer,Bairesdev Llc / (Tax I...,Jalisco,,,
-Work From Home Machine Learning Engineer / Ref. 0129E,Machine Learning Engineer,Bairesdev Llc / (Tax I...,Ciudad de México,,,
+Machine Learning Engineer,ML Engineer,Confidential,Ciudad de México,,,
+Work From Home Machine Learning Engineer / Ref. 0129E,ML Engineer,Bairesdev Llc / (Tax I...,Jalisco,,,
+Work From Home Machine Learning Engineer / Ref. 0129E,ML Engineer,Bairesdev Llc / (Tax I...,Ciudad de México,,,
