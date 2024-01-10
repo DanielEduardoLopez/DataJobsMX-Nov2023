@@ -7,7 +7,7 @@
 
 <font size="-1"><a href="https://www.linkedin.com/in/daniel-eduardo-lopez">LinkedIn</a> | <a href="https://github.com/DanielEduardoLopez">GitHub </a></font>
 
-**23 Dec 2023**
+**14 Ene 2024**
 
 ____
 ### **Contents**
@@ -45,7 +45,7 @@ ____
 Which data job category has the highest salary in the Mexican labor market in November 2023 according to the OCC website?
 ____
 ### **4. Hypothesis** <a class="anchor" id="hypothesis"></a>
-The **Data Scientist** position has the highest salary in the Mexican labor market in November 2023 according to the OCC website.
+The **Data Architect** position has the highest salary in the Mexican labor market in November 2023 according to the OCC website.
 ____
 ### **5. Abridged Methodology** <a class="anchor" id="methodology"></a>
 The methodology of the present study is based on Rollin’s Foundational Methodology for Data Science (Rollins, 2015).
@@ -56,7 +56,7 @@ The methodology of the present study is based on Rollin’s Foundational Methodo
 4) **Data exploration**: Data was explored with Python 3 and its libraries Matplotlib and Seaborn.
 5) **Data preparation**:  Data then was cleaned with Python 3 and its libraries Pandas and Numpy.
 6) **Data analysis**: Data was analyzed with Python 3 and its libraries Pandas, Scipy and Statsmodels and visualized with Matplotlib, Seaborn, Folium and Plotly. 
-7) **Statistical analysis**: The D'Agostino-Pearson normality test was used to assess the normality of the data jobs salary distribution. Then, both parametric (ANOVA and t-test with unequal variance) and non-parametric (Mann-Whitney U and Kruskal-Wallis H) tests were carried out to assess the significance of the obtained results. Furthermore, an effect size analysis was carried out by computing the absolute mean salary differences, the Cohen’s d, and the bootstrap confidence intervals for the mean for each data job category. This, in order to assess whether the salary differences were significant from a practical point of view.
+7) **Statistical analysis**: The D'Agostino-Pearson normality test was used to assess the normality of the data jobs salary distribution. Then, both parametric (ANOVA, Tukey-Kramer and one-sample and two-sample T-tests with unequal variance) and non-parametric (Kruskal-Wallis H, Dunn and Mann-Whitney U) tests were carried out to assess the significance of the obtained results. Furthermore, an effect size analysis was carried out by computing the absolute mean salary differences, the Cohen’s d, and the bootstrap confidence intervals for the mean for each data job category. This, in order to assess whether the salary differences were significant from a practical point of view.
 8) **Implementation**:  A <a href="https://data-jobs-mx-2023.onrender.com"><b>dashboard</b></a> was built with Plotly and Dash and it was deployed on Render.
 
 Furthermore:
