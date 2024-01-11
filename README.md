@@ -67,7 +67,51 @@ Furthermore:
 ___
 ### **6. Main Results** <a class="anchor" id="results"></a>
 
-Pending.
+From the sample of 563 data jobs retrieved, the most demanded data job category was **Data Analyst**, with 33% of the total demand of data jobs in Mexico at the time of this study. On the contrary, **ML Engineer** positions are the less demanded, with about 1% out of the total.
+
+<p align="center">
+	<img src="Figures/Fig1_DemandOfDataJobsPerCategory2.png?raw=true" width=60% height=60%>
+</p>
+
+On the other hand, the data jobs demand is highly concentrated in Mexico City (“**Ciudad de México**”, in Spanish) with about the 57% of the total national demand of data jobs. Then, **Jalisco** and **Nuevo León** represented a distant second place with about the 9% of the demand. Finally, Remote positions and Estado de México accounted for about the 8% and 4% of the demand, respectively; whereas the rest of the country is lagging in terms of data jobs creation. 
+
+<p align="center">
+	<img src="Figures/Fig2_DemandOfDataJobsPerMexicanState.png?raw=true" width=60% height=60%>
+</p>
+
+Regarding the data jobs demand per location, **Data Analyst** position is the one most demanded across the Mexican States; whereas **Data Architect** and **ML Engineer** are the less demanded, as they are mostly concentrated in Mexico City and Jalisco.
+
+<p align="center">
+	<img src="Figures/Fig4_DemandPerLocationAndDataJobCategory2.png?raw=true" width=60% height=60%>
+</p>
+
+Moreover, **Bairesdev** is nowadays the biggest seeker of data skills in the Mexican labor market, along with **Banamex**, **Pesico** and **Softek**. 
+
+<p align="center">
+	<img src="Figures/Fig5_TopCompaniesDemandingDataJobs.png?raw=true" width=60% height=60%>
+</p>
+
+Furthermore, **Data Analyst** and **Data Engineer** positions are more demanded across different organizations. On the contrary, **Data Scientist**, **Data Architect** and, certainly, **ML Engineers** vacancies are demanded in more specific organizations like tech consulting companies and banks.
+
+<p align="center">
+	<img src="Figures/Fig6_DemandPerCompanyAndDataJobCategory.png?raw=true" width=60% height=60%>
+</p>
+
+As expectable, most of the companies are located in **Ciudad de México** as the large majority of the vacancies are offered there. However, the heatmap shows that there are some organizations that are spread across several Mexican states such as Bairesdev or Pepsico. Futhermore, there are few well-known companies whose data jobs demand is not located in the capital region, such as Jonhson Controls which is located in Nuevo León.
+
+<p align="center">
+	<img src="Figures/Fig7_DemandPerCompanyAndLocationTop30_2.png?raw=true" width=60% height=60%>
+</p>
+
+Overall, from a sample of **197** vacancies with disclosed salary, the average salary of the data jobs in Mexico in November 2023 was **$32,163 MXN (SD = 19,417)** per month. 
+
+<p align="center">
+	<img src="Images/Fig15_DataJobsSalaryDistribution.png?raw=true" width=60% height=60%>
+</p>
+
+A normality assumption could not be hold as the D'Agostino-Pearson normality test indicated that the null hypothesis that the sample comes from a normal distribution must be rejected at a signification level of $\alpha$ = 0.05 (*p*-value < 0.001).
+
+Notwithstanding with the above, for the purposes of the present study, both parametric (ANOVA, Tukey-Kramer, and one-sample and two-sample T-test with unequal variance) and non-parametric (Kruskal-Wallis H, Dunn, and Mann-Whitney U) tests were carried out to assess the significance of the obtained results.
 
 ___
 ### **7. Dashboard** <a class="anchor" id="dashboard"></a>
