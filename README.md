@@ -106,7 +106,7 @@ As expectable, most of the companies are located in **Ciudad de México** as the
 Overall, from a sample of **197** vacancies with disclosed salary, the average salary of the data jobs in Mexico in November 2023 was **$32,163 MXN (SD = 19,417)** per month. 
 
 <p align="center">
-	<img src="Images/Fig15_DataJobsSalaryDistribution.png?raw=true" width=60% height=60%>
+	<img src="Figures/Fig15_DataJobsSalaryDistribution2.png?raw=true" width=60% height=60%>
 </p>
 
 A normality assumption could not be hold as the D'Agostino-Pearson normality test indicated that the null hypothesis that the sample comes from a normal distribution must be rejected at a signification level of $\alpha$ = 0.05 (*p*-value < 0.001).
