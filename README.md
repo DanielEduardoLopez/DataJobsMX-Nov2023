@@ -208,5 +208,5 @@ File | Description
 2_DataJobsMX_Nov2023_DataAnalysis.ipynb | Jupyter Notebook for performing the data exploration, preparation, visualization and statistical analysis.
 Dataset_processed.csv | CSV file with the cleaned dataset.
 Dataset_raw.csv | CSV file with the raw data collected from web scraping.
-
+requirements.txt | Python requirements file
 
