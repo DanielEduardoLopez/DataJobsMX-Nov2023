@@ -106,12 +106,56 @@ As expectable, most of the companies are located in **Ciudad de México** as the
 Overall, from a sample of **197** vacancies with disclosed salary, the average salary of the data jobs in Mexico in November 2023 was **$32,163 MXN (SD = 19,417)** per month. 
 
 <p align="center">
-	<img src="Figures/Fig15_DataJobsSalaryDistribution2.png?raw=true" width=60% height=60%>
+	<img src="Figures/Fig17_DataJobsSalaryDistribution2.png?raw=true" width=60% height=60%>
 </p>
 
 A normality assumption could not be hold as the D'Agostino-Pearson normality test indicated that the null hypothesis that the sample comes from a normal distribution must be rejected at a signification level of $\alpha$ = 0.05 (*p*-value < 0.001).
 
-Notwithstanding with the above, for the purposes of the present study, both parametric (ANOVA, Tukey-Kramer, and one-sample and two-sample T-test with unequal variance) and non-parametric (Kruskal-Wallis H, Dunn, and Mann-Whitney U) tests were carried out to assess the significance of the obtained results.
+Notwithstanding with the above, for the purposes of the present study, both parametric (ANOVA, Tukey-Kramer, one-sample T-test, and two-sample T-test with unequal variance) and non-parametric (Kruskal-Wallis H, Dunn, Wilcoxon signed-rank, and Mann-Whitney U) tests were carried out to assess the significance of the obtained results.
+
+The salaries for each data job category are shown in the following box plot:
+
+<p align="center">
+	<img src="Figures/Fig11_SalaryPerDataJobCategory2.png?raw=true" width=60% height=60%>
+</p>
+
+The figure above suggests that, the average and median salaries for the different data jobs categories are:
+
+<p align="center">
+	<img src="Figures/Fig12_MeanMedianSalaryPerDataJob2.png?raw=true" width=60% height=60%>
+</p>
+
+Thus, in view of the figure above, the mean and median monthly salaries are consistent for each data job category. And, it is noteworthy that the salary figures for **ML Engineers** and **Data Architect** positions were the highest ones. 
+
+A one-way analysis of variance (ANOVA) procedure and a Kruskal-Wallis H test confirmed that the salary differences among the data jobs categories were statistically significant at a signification level of $\alpha$ = 0.05 (*p*-value < 0.001 in both tests).
+
+Later, the Tukey-Kramer and Dunn post hoc tests were performed to identify to detect which salary differences among the data jobs were statistically significant, finding some significant differences that were further tested with a series of pairwise two-sample t-tests with unequal variance (Welch's test) and Mann-Whitney U tests. However, as only one salary observation was retrieved for ML Engineer positions, said value was compared to the salary mean of other data jobs by means of a one-sample t-test and the Wilcoxon signed-rank test.
+
+In this sense, it was found that the mean salary for Data Architect positions was not significantly lower than that for a ML Engineer. On the other hand, at a signification level of $\alpha$ = 0.05 (*p*-value < 0.05), Data Engineers and Data Scientists mean salaries were significantly lower than that for ML Engineer. Indeed, from the effect size analysis, the mean salary difference between ML Engineer and Data Engineer positions was, not only statistically significant, but also practically significant as a difference of $19,612 MXN per month and a percentage difference of about 35.53% is non-neglectable in the Mexican labor market.
+
+On the other hand, the mean salary differences between **ML Engineer-Business Analyst**, **ML Engineer-BI Analyst**, **ML Engineer-Data Analyst**, **Data Architect-Business Analyst**, **Data Architect-BI Analyst**, **Data Architect-Data Analyst**, **Data Engineer-Business Analyst**, **Data Engineer-BI Analyst**, **Data Engineer-Data Analyst**, **Data Scientist-BI Analyst**,  **Data Scientist-Data Analyst**, **Business Analyst-Data Analyst**, and **BI Analyst-Data Analyst** positions were statistically significant at the same signification level; whereas the mean salary differences between **Data Architect-Data Engineer**, **Data Engineer-Data Scientist**, **Data Scientist-Business Analyst**, and **Business Analyst-BI Analyst** were not statistically significant at the same signification level.
+
+Thus, according to the results from the present statistical analysis, average salaries for ML Engineers and Data Architects are the highest ones in the current Mexican labor market. However, this conclusion must be taken with caution as only one salary observation was retrieved for ML Engineer positions.
+
+Furthermore, the highest salaries can be found in Ciudad de México, Nuevo León, Jalisco, Estado de México, and in remote.
+
+<p align="center">
+	<img src="Figures/Fig13_SalaryPerLocationAndDataJobCategory2.png?raw=true" width=60% height=60%>
+</p>
+
+Moreover, the companies offering the highest salaries are **Ecosistemex**, **Caspex Corp**, **Addon Technologies**, **Enterprise Solutions**, and **Softek**, which correspond to recruiting agencies and tech consulting firms.
+
+<p align="center">
+	<img src="Figures/Fig14_Top20SalaryPerCompany2.png?raw=true" width=60% height=60%>
+</p>
+
+Finally, for **BI Analyst** positions, the company offering higher salaries are *Randstad* and *Ids Comercial*. For **Business Analyst** positions, the organizations offering higher salaries are *Manpower* and *Totaltech*. For **Data Analyst** positions, the organizations offering higher salaries are *Caspex* and *Santander*. For **Data Architect** positions, the organizations offering higher salaries are *Softtek* and *Everis*. For **Data Engineer** positions, the organizations offering higher salaries are *Manpower*, and *Addon Technologies*. For **Data Scientist** positions, the organizations offering higher salaries are *Ecosistemex* and *Enterprises Solutions*. And, at last, for **ML Engineer** positions, the only company with a disclosed salary is *Enterprise Solutions*.
+
+<p align="center">
+	<img src="Figures/Fig15_SalaryPerCompanyAndDataJobCategory2.png?raw=true" width=60% height=60%>
+</p>
+
+Please refer to the **[Complete Report](https://github.com/DanielEduardoLopez/DataJobsMX-Nov2023/blob/main/Report.pdf)** for the full results and discussion.
 
 ___
 ### **7. Dashboard** <a class="anchor" id="dashboard"></a>
