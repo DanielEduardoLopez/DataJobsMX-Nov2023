@@ -166,7 +166,30 @@ Pending.
 ___
 ### **8. Conclusions** <a class="anchor" id="conclusions"></a>
 
-Pending.
+**ML Engineer** and **Data Architect** are the data job categories with **the highest salary** in the Mexican labor market in November 2023 according to the OCC website. However, this result must be taken with caution as only one salary observation could be retrieved for the former position.
+
+On the contrary, **Data Analyst** is the data job category **more demanded** in the current Mexican labor market and across the different Mexican states, even though it was also the one with **the lowest salary**.
+
+**Ciudad de México** is the place where it is possible to find the highest jobs demand and the highest salaries, even though high salaries can also be found in remote positions.
+
+**ML Engineer** , and **Data Architect** positions are concentrated in Ciudad de México, Nuevo León, and Jalisco, and are most likely to be found in tech consulting firms and banks.
+
+**Data Analyst**, **Business Scientist**, and **Data Engineer** positions are more demanded across different type of organizations and locations.
+
+**Bairesdev**, **Banamex**, **Pepsico** and **Softek** exhibited the highest demand of data jobs positions; while **Ecosistemex**, **Caspex Corp**, **Addon Technologies**, **Enterprise Solutions**, and **Softek**, offered the highest salaries.
+
+This study had **limitations**: 
+- Only used OCC as source of information during a very short period of time (just 26 November 2023). 
+- Very few salary observations were retrieved for ML Engineer, Data Architect and Data Scientist positions.
+- Collected data mostly correspond to Ciudad de México, Nuevo León, Jalisco, and Estado de México.
+- No distinction was made among entry level, middle and senior positions. 
+
+**Future perspectives**:
+- Gather data from more job websites.
+- Retrieve information for a longer time span.
+- Collect more salary observations for Data Architect and Data Scientist positions.
+- Collect more salary data for other Mexican states.
+- Make a distinction among entry level, middle and senior positions.
 
 
 ___
