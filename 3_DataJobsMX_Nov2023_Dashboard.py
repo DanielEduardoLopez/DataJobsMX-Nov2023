@@ -1,8 +1,8 @@
-### DATA JOBS DASHBOARD
+### DATA JOBS IN MEXICO DASHBOARD
 
 """
 By Daniel Eduardo López
-Date: 2023-02-27
+Date: 14 January 2024
 GitHub: https://github.com/DanielEduardoLopez
 LinkedIn: https://www.linkedin.com/in/daniel-eduardo-lopez
 """
@@ -24,33 +24,67 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 # Read the Job data into a Pandas dataframe
-df = pd.read_csv("https://raw.githubusercontent.com/DanielEduardoLopez/DataJobsMX2023/main/Dataset_Clean.csv").rename(columns = {'Avg Salary': 'Salary'})
+df = pd.read_csv("https://raw.githubusercontent.com/DanielEduardoLopez/DataJobsMX-Nov2023/main/Dataset_processed.csv")\
+     .rename(columns = {'Avg Salary': 'Salary'}).drop(columns=['Original Job Title', 'Min Salary',	'Max Salary'])
 
 max_salary = df['Salary'].max()
 min_salary = df['Salary'].min()
+
+
+# Settings
+
+category_order = ['ML Engineer',
+                  'Data Architect', 
+                  'Data Engineer', 
+                  'Data Scientist', 
+                  'Business Analyst', 
+                  'BI Analyst',
+                  'Data Analyst']
+
 
 # Plotting functions
 
 # Job Demand: Pie Chart
 def plot_pie_chart(df):
 
-  job_df = pd.DataFrame(df['Job'].value_counts().reset_index().rename(columns = {'index': 'Job', 'Job': 'Count'}))
-  pie_colors = ['#06477D','#84BDEC','#B4D4EF', '#C8E4FC','white']
-  demand_job_plot = px.pie(job_df, values='Count', names='Job', color = 'Job', hole = 0.7,  
-                           color_discrete_sequence=px.colors.sequential.Blues_r,
-                           height=450,
-                           title='Demand of Data Jobs Per Category')
-  demand_job_plot.update_traces(hoverinfo='label+percent+name', textinfo='percent', textfont_size=16,
-                    marker=dict(colors=pie_colors, line=dict(color="rgba(0,0,0,0)", width=4)))
-  demand_job_plot.update_layout(transition_duration=400, title_x=0.5, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                                legend=dict(
-                                    #yanchor="bottom",
-                                    y=0.01,
-                                    #xanchor="right",
-                                    x=0.99)
-                                )
-  
-  return demand_job_plot
+    job_df = pd.DataFrame(df['Job'].value_counts().reset_index()).rename(columns = {'count': 'Count'})
+
+    pie_colors = ['#154360','#539ecd','#89bedc',"#a9cce3", "#d4e6f1",'#dbe9f6', "#ebf5fb"]
+
+    demand_job_plot = px.pie(job_df, 
+                            values='Count', 
+                            names='Job', 
+                            color = 'Job', 
+                            hole = 0.7,  
+                            color_discrete_sequence=px.colors.sequential.Blues_r,
+                            height=450,
+                            title='Demand of Data Jobs Per Category'
+                            )
+    
+    demand_job_plot.update_traces(hoverinfo='label+percent+name', 
+                                  textinfo='percent',                                 
+                                  texttemplate='%{percent:.1%}',
+                                  textfont_size=16,
+                                  direction ='clockwise',                                
+                                  marker=dict(colors=pie_colors, line=dict(color="rgba(0,0,0,0)", width=4))
+                                  )
+    
+    demand_job_plot.update_layout(transition_duration=400, 
+                                  title_x=0.5, 
+                                  paper_bgcolor="rgba(0,0,0,0)", 
+                                  plot_bgcolor="rgba(0,0,0,0)",
+                                  legend=dict(
+                                      #yanchor="bottom",
+                                      y=0.01,
+                                      #xanchor="right",
+                                      x=0.99,
+                                      bgcolor='#f0f0f0',
+                                      bordercolor='#cbcccd',
+                                      borderwidth=1.5
+                                      )
+                                  )
+    
+    return demand_job_plot
 
 # Sample size and Avg Salary: Card
 def plot_card(df):
@@ -96,225 +130,297 @@ def plot_card(df):
 # Company Demand: Treemap
 def plot_treemap(df):
 
-  top = 20
+    top = 20
 
-  #company_df = pd.pivot_table(data = df, index = ['Company'], columns = 'Job', values = 'Location', aggfunc = 'count').fillna(0).reset_index()
-  company_df =  df.groupby(by='Company', as_index=False)['Job'].count().sort_values(by = 'Job', ascending = False).\
-                rename(columns = {'Job': 'Vacancies'})[:top]
-  company_df['Company'] = company_df['Company'].map(lambda x: x[:15])
-  company_df = company_df[company_df['Vacancies'] > 0]
+    company_df =  (df.groupby(by='Company', as_index=False)['Job'].count()
+                  .sort_values(by = 'Job', ascending = False)
+                  .rename(columns = {'Job': 'Vacancies'})[:top]
+                  .assign(Company=lambda d:d['Company'].map(lambda x: x[:15]))
+                )
 
-  demand_company_plot = px.treemap(company_df, path = [px.Constant("."), 'Company'], values='Vacancies', color = 'Vacancies', 
-                                  color_continuous_scale=px.colors.sequential.Blues,
-                                  title= f'Top {top} Companies Demanding Data Jobs'
-                                  )
-  demand_company_plot.update_layout(transition_duration=400, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    company_df = company_df[company_df['Vacancies'] > 0]
 
-  return demand_company_plot
+    demand_company_plot = px.treemap(company_df, path = [px.Constant("."), 'Company'], values='Vacancies', color = 'Vacancies', 
+                                    color_continuous_scale=px.colors.sequential.Blues,
+                                    title= f'Top {top} Companies Demanding Data Jobs'
+                                    )
+    demand_company_plot.update_layout(transition_duration=400, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+      
+    return demand_company_plot
 
 # Alternative: Company Demand: Bar Chart
 def plot_barchart(df):
 
-  top = 30
-  bar_colors = ['#84BDEC',] * 30
-  bar_colors.insert(29,'#06477D')
-  company_df = df.groupby(by = 'Company', as_index= False)['Job'].count().sort_values(by = 'Job', ascending = False).rename(columns = {'Job': 'Vacancies'})[:top]
-  company_df['Company'] = company_df['Company'].map(lambda x: x[:25])
-  company_df = company_df[company_df['Vacancies'] > 0]
+    top = 30
 
-  demand_company_plot = px.bar(company_df.sort_values(by = 'Vacancies'), x='Vacancies', y='Company',
-            color = 'Vacancies', color_continuous_scale=bar_colors,
-            #text="Vacancies",
-            height=720,
-            title= f'Top {top} Companies Demanding Data Jobs',
-            opacity = 0.8)
-  demand_company_plot.update_traces(marker_color= bar_colors, marker_line_color='#06477D', textfont_size=11, textangle=0,
-                                    textposition="outside", cliponaxis=False, hovertemplate=None)
-  demand_company_plot.update_layout(transition_duration=400, title_x=0.5, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#e1e7ff")
-  demand_company_plot.update_layout(hovermode="x unified")
+    company_df = (df.groupby(by = 'Company', as_index= False)['Job'].count()
+                  .sort_values(by = 'Job', ascending = False)
+                  .rename(columns = {'Job': 'Vacancies'})[:top]
+                  .assign(Company= lambda d:d['Company'].map(lambda x: x[:25]))
+                )
+    company_df = company_df[company_df['Vacancies'] > 0]
 
-  return demand_company_plot
+    demand_company_plot = px.bar(company_df.sort_values(by = 'Vacancies'), 
+                                x='Vacancies', 
+                                y='Company',
+                                #color = 'Vacancies', 
+                                color_continuous_scale=px.colors.sequential.Blues,
+                                #text="Vacancies",
+                                height=720,
+                                title= f'Top {top} Companies Demanding Data Jobs',
+                                opacity = 0.7)
+
+    demand_company_plot.update_traces(marker_color= px.colors.sequential.Blues[7], 
+                                      marker_line_color='white', 
+                                      textfont_size=11, 
+                                      textangle=0,
+                                      textposition="outside", 
+                                      cliponaxis=False, 
+                                      hovertemplate=None)
+
+    demand_company_plot.update_layout(transition_duration=400, 
+                                      title_x=0.5, 
+                                      paper_bgcolor="rgba(0,0,0,0)", 
+                                      plot_bgcolor="#e1e7ff")
+
+    demand_company_plot.update_layout(hovermode="x unified")
+
+    return demand_company_plot
 
 # Location Demand: Choropleth Map
 def plot_cloropleth(df):
 
-  # States dictionary with corresponding ID
-  location_dict = {'Aguascalientes': 'AS', 
-              'Baja California': 'BC', 
-              'Baja California Sur': 'BS', 
-              'Campeche': 'CC',
-              'Ciudad de México':'DF',
-              'Chiapas': 'CS',
-              'Chihuahua':'CH',
-              'Coahuila':'CL',
-              'Colima':'CM',
-              'Durango':'DG',
-              'Estado de México':'MC',
-              'Guanajuato':'GT',
-              'Guerrero':'GR',
-              'Hidalgo':'HG',
-              'Jalisco':'JC',
-              'Michoacán':'MN',
-              'Morelos':'MS',
-              'Nayarit':'NT',
-              'Nuevo León':'NL',
-              'Oaxaca':'OC',
-              'Puebla':'PL',
-              'Querétaro':'QT',
-              'Quintana Roo':'QR',
-              'San Luis Potosí':'SP',
-              'Sinaloa':'SL',
-              'Sonora':'SR',
-              'Tabasco':'TC',
-              'Tamaulipas':'TS',
-              'Tlaxcala':'TL',
-              'Veracruz':'VZ',
-              'Yucatán':'YN',
-              'Zacatecas':'ZS'}
+    # States dictionary with corresponding ID
+    location_dict = {'Aguascalientes': 'AS', 
+                    'Baja California': 'BC', 
+                    'Baja California Sur': 'BS', 
+                    'Campeche': 'CC',
+                    'Ciudad de México':'DF',
+                    'Chiapas': 'CS',
+                    'Chihuahua':'CH',
+                    'Coahuila':'CL',
+                    'Colima':'CM',
+                    'Durango':'DG',
+                    'Estado de México':'MC',
+                    'Guanajuato':'GT',
+                    'Guerrero':'GR',
+                    'Hidalgo':'HG',
+                    'Jalisco':'JC',
+                    'Michoacán':'MN',
+                    'Morelos':'MS',
+                    'Nayarit':'NT',
+                    'Nuevo León':'NL',
+                    'Oaxaca':'OC',
+                    'Puebla':'PL',
+                    'Querétaro':'QT',
+                    'Quintana Roo':'QR',
+                    'San Luis Potosí':'SP',
+                    'Sinaloa':'SL',
+                    'Sonora':'SR',
+                    'Tabasco':'TC',
+                    'Tamaulipas':'TS',
+                    'Tlaxcala':'TL',
+                    'Veracruz':'VZ',
+                    'Yucatán':'YN',
+                    'Zacatecas':'ZS'}
 
-  location_df = pd.DataFrame.from_dict(location_dict, orient='index').reset_index().rename(columns={"index": "State", 0: "ID"}).set_index('State')
+    location_df = (pd.DataFrame.from_dict(location_dict, orient='index').reset_index()
+                  .rename(columns={"index": "State", 0: "ID"}).set_index('State')
+                    )
 
-  demand = pd.DataFrame(df['Location'].value_counts())
-  total = sum(demand['Location'])
-  demand['Percentage'] = (demand['Location']) / total *100
-  demand = demand.reset_index().rename(columns={"index": "State", "Location": "Count"})
+    demand = (pd.DataFrame(df['Location'].value_counts())
+              .reset_index()
+              .rename(columns={'count':'Count', 'Location':'State'})
+              .assign(total= lambda d: sum(d.Count))
+              .assign(Percentage= lambda d: (d['Count'] / d.total )*100)
+              .drop(columns=['total'])
+              )
 
-  location_df = location_df.merge(demand, left_on='State', right_on='State', how = 'outer').fillna(0)
+    location_df = location_df.merge(demand, left_on='State', right_on='State', how = 'outer').fillna(0)
 
-  demand_location_plot = px.choropleth(location_df, 
-                            geojson = 'https://raw.githubusercontent.com/isaacarroyov/data_visualization_practice/master/Python/visualizing_mexican_wildfires_tds/data/states_mx.json', 
-                            locations='ID', 
-                            color='Percentage',
-                            color_continuous_scale="Blues",
-                            scope="north america",
-                            #title='Demand of Data Jobs per Mexican State',
-                            labels={'Percentage':'National <br>Demand %'}
-                            )
-  demand_location_plot.update_layout(margin={"r":0,"t":0,"l":0,"b":0}, transition_duration=300,
-                                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", geo_bgcolor = "rgba(0,0,0,0)")
-  demand_location_plot.update_geos(fitbounds="locations", visible=False)
-  demand_location_plot.update_layout(transition_duration=400, title_x=0.5)
-  
-  return demand_location_plot
+    demand_location_plot = px.choropleth(location_df, 
+                                        geojson = 'https://raw.githubusercontent.com/isaacarroyov/data_visualization_practice/master/Python/visualizing_mexican_wildfires_tds/data/states_mx.json', 
+                                        locations='ID', 
+                                        color='Percentage',
+                                        color_continuous_scale="Blues",
+                                        scope="north america",
+                                        #title='Demand of Data Jobs per Mexican State',
+                                        labels={'Percentage':'National <br>Demand %'}
+                                        )
+    demand_location_plot.update_layout(margin={"r":0,"t":0,"l":0,"b":0}, 
+                                      transition_duration=300,
+                                      paper_bgcolor="rgba(0,0,0,0)", 
+                                      plot_bgcolor="rgba(0,0,0,0)", 
+                                      geo_bgcolor = "rgba(0,0,0,0)")
+    demand_location_plot.update_geos(fitbounds="locations", 
+                                    visible=False)
+    demand_location_plot.update_layout(transition_duration=400, 
+                                      title_x=0.5)
+ 
+    return demand_location_plot
 
 # Salary Per Job: Boxplot
 def plot_boxplot(df):
 
-  salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
+    salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
 
-  salary_job_plot = px.box(salary_job_df, x = "Job", y = "Salary", 
-                          color = "Job", points="all", 
-                          color_discrete_sequence=px.colors.sequential.Blues_r,
-                          category_orders={"Job": ['Data Architect', 'Data Engineer', 'Data Scientist', 'Business Analyst', 'Data Analyst']},
-                          labels={
-                                  "Salary": "Average Monthly Salary (MXN)",
-                                  "Job": "Data Job Category"},
-                          title='Salary Per Data Job Category',
-                          height=450
-                          )
-  salary_job_plot.update_traces(showlegend=False)
-  salary_job_plot.update_layout(transition_duration=400, title_x=0.5, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor='#e1e7ff')
-  salary_job_plot.update_yaxes(tickformat = '$,~s')
+    salary_job_plot = px.box(salary_job_df, 
+                            x = "Job", 
+                            y = "Salary", 
+                            color = "Job", 
+                            points="all", 
+                            color_discrete_sequence=px.colors.sequential.Blues_r,
+                            category_orders={"Job": ['ML Engineer',
+                                                    'Data Architect', 
+                                                    'Data Engineer', 
+                                                    'Data Scientist', 
+                                                    'Business Analyst', 
+                                                    'BI Analyst',
+                                                    'Data Analyst']},
+                            labels={
+                                    "Salary": "Average Monthly Salary (MXN)",
+                                    "Job": "Data Job Category"},
+                            title='Salary Per Data Job Category',
+                            height=450
+                            )
+    salary_job_plot.update_traces(showlegend=False)
+    salary_job_plot.update_layout(transition_duration=400, 
+                                  title_x=0.5, 
+                                  paper_bgcolor="rgba(0,0,0,0)", 
+                                  plot_bgcolor='#e1e7ff')
+    salary_job_plot.update_yaxes(tickformat = '$,~s')
 
-  return salary_job_plot
+    return salary_job_plot
 
 # Salary Per Company: Heatmap
 
 def plot_heatmap(df):
 
-  top = 30
+    top = 30
 
-  salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
-  salary_company_df = pd.pivot_table(salary_job_df, index = 'Company', columns = 'Job', values = 'Salary', aggfunc= 'mean')
-  salary_company_df['Total Average'] = salary_company_df.mean(axis=1, numeric_only= True)
-  salary_company_df = salary_company_df.fillna(0).sort_values('Total Average', ascending = False)[:top].\
-                      sort_values('Company', ascending = False).drop(columns = 'Total Average').reset_index().\
-                      rename(index = {'Job': 'Index'})
-  salary_company_df = pd.melt(salary_company_df, id_vars = 'Company', var_name = 'Job', value_name = 'Salary')
+    salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
 
-  salary_company_plot = px.density_heatmap(salary_company_df, y='Company', x = 'Job', z = 'Salary',
-                          histfunc="avg", color_continuous_scale="Blues",
-                          height=720,
-                          title='Salary Per Company And Data Job Category',
-                          labels={"Job": "Data Job Category"},
-                          #text_auto=True
-                          )
-  salary_company_plot.update_layout(transition_duration=400, title_x=0.5, coloraxis_colorbar=dict(title="Avg. Mth. <br>Salary (MXN)"),
-                                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-  salary_company_plot.update_coloraxes(colorbar_tickformat = '$,~s')
-  #salary_company_plot.update_traces(texttemplate="$%{z:,.0f}")
-  return salary_company_plot
+    salary_company_df = (pd.pivot_table(salary_job_df, index = 'Company', columns = 'Job', values = 'Salary', aggfunc= 'mean')
+                        .assign(Total_Average= lambda d: d.mean(axis=1, numeric_only= True))
+                        .fillna(0).sort_values('Total_Average', ascending = False)[:top]
+                        .sort_values('Company', ascending = False)
+                        .drop(columns = 'Total_Average').reset_index()
+                        .rename(index = {'Job': 'Index'})
+                        )                  
+
+    salary_company_df = pd.melt(salary_company_df, id_vars = 'Company', var_name = 'Job', value_name = 'Salary')
+
+    salary_company_plot = px.density_heatmap(salary_company_df, 
+                                            y='Company', 
+                                            x = 'Job', 
+                                            z = 'Salary',
+                                            histfunc="avg", 
+                                            color_continuous_scale="Blues",
+                                            height=720,
+                                            title='Salary Per Company And Data Job Category',
+                                            labels={"Job": "Data Job Category"},                                         
+                                            #text_auto=True
+                                            )
+    salary_company_plot.update_layout(transition_duration=400, 
+                                      title_x=0.5, 
+                                      coloraxis_colorbar=dict(title="Avg. Mth. <br>Salary (MXN)"),
+                                      paper_bgcolor="rgba(0,0,0,0)", 
+                                      plot_bgcolor="rgba(0,0,0,0)")
+
+    salary_company_plot.update_coloraxes(colorbar_tickformat = '$,~s')
+    #salary_company_plot.update_traces(texttemplate="$%{z:,.0f}")
+
+    return salary_company_plot
 
 # Salary Per Location: Contour plot
 def plot_contour(df):
 
     # States dictionary with corresponding ID
-  location_dict = {'Aguascalientes': 'AS', 
-              'Baja California': 'BC', 
-              'Baja California Sur': 'BS', 
-              'Campeche': 'CC',
-              'Ciudad de México':'DF',
-              'Chiapas': 'CS',
-              'Chihuahua':'CH',
-              'Coahuila':'CL',
-              'Colima':'CM',
-              'Durango':'DG',
-              'Estado de México':'MC',
-              'Guanajuato':'GT',
-              'Guerrero':'GR',
-              'Hidalgo':'HG',
-              'Jalisco':'JC',
-              'Michoacán':'MN',
-              'Morelos':'MS',
-              'Nayarit':'NT',
-              'Nuevo León':'NL',
-              'Oaxaca':'OC',
-              'Puebla':'PL',
-              'Querétaro':'QT',
-              'Quintana Roo':'QR',
-              'San Luis Potosí':'SP',
-              'Sinaloa':'SL',
-              'Sonora':'SR',
-              'Tabasco':'TC',
-              'Tamaulipas':'TS',
-              'Tlaxcala':'TL',
-              'Veracruz':'VZ',
-              'Yucatán':'YN',
-              'Zacatecas':'ZS'}
+    location_dict = {'Aguascalientes': 'AS', 
+                'Baja California': 'BC', 
+                'Baja California Sur': 'BS', 
+                'Campeche': 'CC',
+                'Ciudad de México':'DF',
+                'Chiapas': 'CS',
+                'Chihuahua':'CH',
+                'Coahuila':'CL',
+                'Colima':'CM',
+                'Durango':'DG',
+                'Estado de México':'MC',
+                'Guanajuato':'GT',
+                'Guerrero':'GR',
+                'Hidalgo':'HG',
+                'Jalisco':'JC',
+                'Michoacán':'MN',
+                'Morelos':'MS',
+                'Nayarit':'NT',
+                'Nuevo León':'NL',
+                'Oaxaca':'OC',
+                'Puebla':'PL',
+                'Querétaro':'QT',
+                'Quintana Roo':'QR',
+                'San Luis Potosí':'SP',
+                'Sinaloa':'SL',
+                'Sonora':'SR',
+                'Tabasco':'TC',
+                'Tamaulipas':'TS',
+                'Tlaxcala':'TL',
+                'Veracruz':'VZ',
+                'Yucatán':'YN',
+                'Zacatecas':'ZS'}
 
-  location_df = pd.DataFrame.from_dict(location_dict, orient='index').reset_index().rename(columns={"index": "State", 0: "ID"}).set_index('State')
+    location_df = (pd.DataFrame.from_dict(location_dict, orient='index')
+                  .reset_index().rename(columns={"index": "State", 0: "ID"})
+                  .set_index('State')
+                    )
 
-  demand = pd.DataFrame(df['Location'].value_counts())
-  total = sum(demand['Location'])
-  demand['Percentage'] = (demand['Location']) / total *100
-  demand = demand.reset_index().rename(columns={"index": "State", "Location": "Count"})
+    demand = (pd.DataFrame(df['Location'].value_counts())
+              .reset_index()
+              .rename(columns={'count':'Count', 'Location':'State'})
+              .assign(total= lambda d: sum(d.Count))
+              .assign(Percentage= lambda d: (d['Count'] / d.total )*100)
+              .drop(columns=['total'])
+              )
 
-  location_df = location_df.merge(demand, left_on='State', right_on='State', how = 'outer').fillna(0)
+    location_df = location_df.merge(demand, left_on='State', right_on='State', how = 'outer').fillna(0)
 
-  salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
+    salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
 
-  salary_location_df = pd.pivot_table(data = salary_job_df, index = 'Location', columns = 'Job', values = 'Salary', aggfunc= 'mean').reset_index().\
-      merge(location_df, left_on='Location', right_on='State', how = 'outer').set_index('State').drop(columns =['ID', 'Count', 'Percentage', 'Location']).fillna(0).\
-      sort_values('State', ascending = False).reset_index()
-  salary_location_df = pd.melt(salary_location_df, id_vars= 'State', var_name = 'Job', value_name = 'Salary')
+    salary_location_df = (pd.pivot_table(data = salary_job_df, index = 'Location', columns = 'Job', values = 'Salary', aggfunc= 'mean')
+                          .reset_index().merge(location_df, left_on='Location', right_on='State', how = 'outer')
+                          .set_index('State').drop(columns =['ID', 'Count', 'Percentage', 'Location']).fillna(0)
+                          .sort_values('State', ascending = False).reset_index()
+                        )
 
-  salary_location_plot = px.density_contour(salary_location_df, y='State', x = 'Job', z = 'Salary',
-                          histfunc="avg", 
-                          color_discrete_sequence=px.colors.sequential.Blues_r,
-                          height=720,
-                          title='Salary Per Location And Data Job Category',
-                          labels={
-                                  "State": "Location",
-                                  'Job': 'Data Job Category'
-                                  }
-                          )
-  salary_location_plot.update_traces(contours_coloring="fill", contours_showlabels = True, 
-                                    colorscale = 'Blues', colorbar_tickformat='$,~s',
-                                    colorbar_title_text='Avg. Mth. <br>Salary (MXN)')
-  salary_location_plot.update_layout(transition_duration=400, title_x=0.5, coloraxis_colorbar=dict(title="Vacancies"),
-                                      paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    salary_location_df = pd.melt(salary_location_df, id_vars= 'State', var_name = 'Job', value_name = 'Salary')
 
-  return salary_location_plot
+    salary_location_plot = px.density_contour(salary_location_df, 
+                                              y='State', 
+                                              x='Job', 
+                                              z='Salary',
+                                              histfunc="avg", 
+                                              color_discrete_sequence=px.colors.sequential.Blues_r,
+                                              height=720,
+                                              title='Salary Per Location And Data Job Category',
+                                              labels={
+                                                        "State": "Location",
+                                                        'Job': 'Data Job Category'
+                                                        }
+                                                )
+
+    salary_location_plot.update_traces(contours_coloring="fill", 
+                                      contours_showlabels = True, 
+                                      colorscale = 'Blues', 
+                                      colorbar_tickformat='$,~s',
+                                      colorbar_title_text='Avg. Mth. <br>Salary (MXN)')
+
+    salary_location_plot.update_layout(transition_duration=400, 
+                                      title_x=0.5, 
+                                      coloraxis_colorbar=dict(title="Vacancies"),
+                                      paper_bgcolor="rgba(0,0,0,0)", 
+                                      plot_bgcolor="rgba(0,0,0,0)")
+
+    return salary_location_plot
 
 
 # Helper function for dropdowns
@@ -788,4 +894,4 @@ def update_output(job, location, company, salary, salary_filter):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
