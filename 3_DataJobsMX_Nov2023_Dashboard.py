@@ -30,6 +30,9 @@ df = pd.read_csv("https://raw.githubusercontent.com/DanielEduardoLopez/DataJobsM
 max_salary = df['Salary'].max()
 min_salary = df['Salary'].min()
 
+# Images
+
+image_path = 'assets/icon.png'
 
 # Settings
 
@@ -140,11 +143,20 @@ def plot_treemap(df):
 
     company_df = company_df[company_df['Vacancies'] > 0]
 
-    demand_company_plot = px.treemap(company_df, path = [px.Constant("."), 'Company'], values='Vacancies', color = 'Vacancies', 
-                                    color_continuous_scale=px.colors.sequential.Blues,
-                                    title= f'Top {top} Companies Demanding Data Jobs'
+    demand_company_plot = px.treemap(company_df, 
+                                     path = [px.Constant("."), 'Company'], 
+                                     values='Vacancies', 
+                                     color = 'Vacancies', 
+                                     color_continuous_scale=px.colors.sequential.Blues,
+                                     title= f'Top {top} Companies Demanding Data Jobs',
+                                     height= 700,
+                                     width = 500,
+
                                     )
-    demand_company_plot.update_layout(transition_duration=400, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    
+    demand_company_plot.update_layout(transition_duration=400, 
+                                      paper_bgcolor="rgba(0,0,0,0)", 
+                                      plot_bgcolor="rgba(0,0,0,0)")
       
     return demand_company_plot
 
@@ -436,15 +448,47 @@ app = dash.Dash(__name__)
 app.layout = html.Div(children=[
                                 # First section
                                 # Adding Title
-                                html.Div(children=[ html.H1('Data Jobs in Mexico Dashboard',
-                                        style={'textAlign': 'center', 'color': 'white',
-                                               'font-size': 40, 'font-family': 'Tahoma'})], 
-                                               style={'margin-top': '0',
+                                html.Div(children=[ 
+                                                   html.Br(),
+                                                   html.Img(src=image_path,
+                                                             style={
+                                                            'margin-top': '15px',
+                                                            'margin-left': '70%',
+                                                            'width': '70px', 
+                                                            'height': '70px', 
+                                                            'float': 'center',
+                                                        }),
+                                                   html.H1('Data Jobs in Mexico Dashboard',
+                                                  style={'textAlign': 'center', 'color': '#0025a1',
+                                                        'font-size': 40, 'font-family': 'Tahoma',
+                                                        'text-shadow': '0 0 5px #fff',
+                                                        'margin-top': '-65px'
+                                                        }),                                               
+                                                    
+                                               ], 
+                                               style={'margin-top': '-25px',
                                                       'width': '100%', 
-                                                      'height': '60px', 
-                                                      'background-color': 'navy', 
+                                                      'height': '110px', 
+                                                      'background-color': '#B3D5FA', 
                                                       'float': 'center', 
-                                                      'margin': '0'}  
+                                                      }                                               
+                                        ),
+                                
+                                html.Div(children=[ html.P('.',
+                                        style={'textAlign': 'center', 'color': 'navy',
+                                               'font-size': 5, 'font-family': 'Tahoma'})], 
+                                               style={'margin-top': '-5px',
+                                                      'width': '100%', 
+                                                      'height': '10px', 
+                                                      'background-color': '#001c7a', 
+                                                      'textAlign': 'center',
+                                                      'float': 'center', 
+                                                      'border-style': 'solid',
+                                                      'border-color': 'White',
+                                                      'border-width': '1px',
+                                                      'border-radius': '10px',
+                                                      }  
+                                              
                                         ),
                                 
                                 # Adding Author
@@ -801,7 +845,7 @@ def update_output(job, location, company, salary, salary_filter):
   if 'All' in job and 'All' in location and 'All' in company:
     
     demand_job_plot = plot_pie_chart(dff)
-    demand_company_plot = plot_barchart(dff)
+    demand_company_plot = plot_treemap(dff)
     demand_location_plot = plot_cloropleth(dff)
     salary_job_plot = plot_boxplot(dff)
     salary_company_plot = plot_heatmap(dff)
@@ -814,7 +858,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[dff.Job.isin(job)]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
@@ -825,7 +869,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[dff.Company.isin(company)]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
@@ -836,7 +880,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[dff.Location.isin(location)]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
@@ -847,7 +891,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[(dff.Company.isin(company)) & (dff.Location.isin(location))]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
@@ -858,7 +902,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[(dff.Company.isin(company)) & (dff.Job.isin(job))]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
@@ -869,7 +913,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[(dff.Location.isin(location)) & (dff.Job.isin(job))]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
@@ -880,7 +924,7 @@ def update_output(job, location, company, salary, salary_filter):
           dff = dff[(dff.Job.isin(job)) & (dff.Location.isin(location)) & (dff.Company.isin(company))]
 
           demand_job_plot = plot_pie_chart(dff)
-          demand_company_plot = plot_barchart(dff)
+          demand_company_plot = plot_treemap(dff)
           demand_location_plot = plot_cloropleth(dff)
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
