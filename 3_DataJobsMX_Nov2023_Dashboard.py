@@ -44,6 +44,8 @@ category_order = ['ML Engineer',
                   'BI Analyst',
                   'Data Analyst']
 
+dropdown_bg_color= '#001c7a'
+
 
 # Plotting functions
 
@@ -81,8 +83,8 @@ def plot_pie_chart(df):
                                       y=0.01,
                                       #xanchor="right",
                                       x=0.99,
-                                      bgcolor='#f0f0f0',
-                                      bordercolor='#cbcccd',
+                                      bgcolor='#d6eaf8',
+                                      bordercolor='#2471a3',
                                       borderwidth=1.5
                                       )
                                   )
@@ -480,7 +482,7 @@ app.layout = html.Div(children=[
                                                style={'margin-top': '-5px',
                                                       'width': '100%', 
                                                       'height': '10px', 
-                                                      'background-color': '#001c7a', 
+                                                      'background-color': dropdown_bg_color, 
                                                       'textAlign': 'center',
                                                       'float': 'center', 
                                                       'border-style': 'solid',
@@ -495,28 +497,18 @@ app.layout = html.Div(children=[
                                 html.P("By Daniel Eduardo López",
                                         style={'textAlign': 'center', 'color': 'navy',
                                                'font-size': 16, 'font-family': 'Tahoma'}),
-                                dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez",
-                                        style={'textAlign': 'center', 'color': 'navy',
-                                               'font-size': 12, 'font-family': 'Tahoma',
-                                               'margin': 'auto',
-                                               'display': 'block'}),
+                                # dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez",
+                                #         style={'textAlign': 'center', 'color': 'navy',
+                                #                'font-size': 12, 'font-family': 'Tahoma',
+                                #                'margin': 'auto',
+                                #                'display': 'block'}),
                                 
                                 dcc.Link(html.A('LinkedIn'), href="https://www.linkedin.com/in/daniel-eduardo-lopez",
                                         style={'textAlign': 'center', 'color': 'navy',
                                                'font-size': 12, 'font-family': 'Tahoma',
-                                               'margin': 'auto',
-                                               'display': 'block'}),
-                                # html.Br(),
-                                
-                                # Adding a very brief Introduction to the Dashboard
-                                html.P("This Dashboard shows the Data Jobs demand and salaries in Mexico in February 2023.",
-                                        style={'textAlign': 'center', 'color': 'black',
-                                               'font-size': 14, 'font-family': 'Tahoma'}),
-                                
-                                html.P("- Data was collected on February 7, 2023 from the OCC website. -",
-                                        style={'textAlign': 'center', 'color': 'navy',
-                                               'font-size': 14, 'font-family': 'Tahoma'}),
-                                html.Br(),
+                                               'margin-top': '-5px',
+                                               'display': 'block'
+                                               }),
                                 
                                 # Second section: Dropdowns & Slider
                                 html.Div(children=[
@@ -526,10 +518,17 @@ app.layout = html.Div(children=[
                                       #html.Br(),
 
                                     html.Div(children=[
-                                            html.Label("Data Job Selection:", className='dropdown-labels',
-                                                    style={'textAlign': 'left', 'color': 'navy',
-                                                      'font-size': 15, 'font-family': 'Tahoma'}
+                                            html.P("Sliders:", className='dropdown-labels',
+                                                    style={'textAlign': 'left', 'color': 'navy', 'font-weight': 'bold',
+                                                      'font-size': 20, 'font-family': 'Tahoma', 'text-shadow': '0 0 5px #fff'}
                                                     ),
+                                            html.Br(),
+                                            html.Div(
+                                                html.Label("Data Job:", className='dropdown-labels',
+                                                        style={'textAlign': 'left', 'color': 'white', 'font-weight': 'bold',
+                                                          'font-size': 17, 'font-family': 'Tahoma', }
+                                                        ),  style={'background-color': dropdown_bg_color,}
+                                            ),                                            
                                             dcc.Dropdown(id='job_dropdown',
                                                       options=create_dropdown_options(df['Job']),
                                                       value='All',
@@ -537,13 +536,13 @@ app.layout = html.Div(children=[
                                                       multi=True,
                                                       searchable=True,
                                                       style={'textAlign': 'left', 'color': '#2e2d2d',
-                                                      'font-size': 14, 'font-family': 'Tahoma'}
+                                                      'font-size': 15, 'font-family': 'Tahoma'}
                                                       ),
                                             ], id='first-selector',
-                                            style={'margin-top': '0px',
+                                            style={'margin-top': '15px',
                                                     'margin-left': '10px',
                                                     'margin-right': '0px',
-                                                    'width': '25%',
+                                                    'width': '90%',
                                                    'height': '80px',
                                                    'background-color': '#B3D5FA',
                                                    'float': 'center',
@@ -552,10 +551,13 @@ app.layout = html.Div(children=[
 
                                     # Dropdown list to enable Location selection
                                     html.Div(children=[
-                                              html.Label("Location Selection:", className='dropdown-labels',
-                                                        style={'textAlign': 'left', 'color': 'navy',
-                                                          'font-size': 15, 'font-family': 'Tahoma'}
-                                                        ),
+                                              html.Div(
+                                                  html.Label("Location:", className='dropdown-labels',
+                                                            style={'textAlign': 'left', 'color': 'white','font-weight': 'bold',
+                                                              'font-size': 17, 'font-family': 'Tahoma'}
+                                                            ), style={'background-color': dropdown_bg_color,}
+
+                                              ),                                              
                                               dcc.Dropdown(id='location_dropdown',
                                                           options=create_dropdown_options(df['Location']),
                                                           value='All',
@@ -563,13 +565,13 @@ app.layout = html.Div(children=[
                                                           multi=True,
                                                           searchable=True,
                                                           style={'textAlign': 'left', 'color': '#2e2d2d',
-                                                          'font-size': 14, 'font-family': 'Tahoma'}
+                                                          'font-size': 15, 'font-family': 'Tahoma'}
                                                           ),
                                             ], id='second-selector',
-                                            style={'margin-top': '-80px',
-                                                    'margin-left': '28%',
+                                            style={'margin-top': '60px',
+                                                    'margin-left': '10px',
                                                     'margin-right': '0px',
-                                                    'width': '25%',
+                                                    'width': '90%',
                                                    'height': '80px',
                                                    'background-color': '#B3D5FA',
                                                    'float': 'center',
@@ -579,10 +581,12 @@ app.layout = html.Div(children=[
 
                                       # Dropdown list to enable Company selection
                                     html.Div(children=[
-                                              html.Label("Company Selection:", className='dropdown-labels',
-                                                          style={'textAlign': 'left', 'color': 'navy',
-                                                          'font-size': 15, 'font-family': 'Tahoma'}
-                                                          ),
+                                               html.Div(
+                                                  html.Label("Company:", className='dropdown-labels',
+                                                              style={'textAlign': 'left', 'color': 'white','font-weight': 'bold',
+                                                              'font-size': 17, 'font-family': 'Tahoma'}
+                                                              ), style={'background-color': dropdown_bg_color,}
+                                               ),                                              
                                               dcc.Dropdown(id='company_dropdown',
                                                           options=create_dropdown_options(df['Company']),
                                                           value='All',
@@ -590,13 +594,13 @@ app.layout = html.Div(children=[
                                                           multi=True,
                                                           searchable=True,
                                                           style={'textAlign': 'left', 'color': '#2e2d2d',
-                                                          'font-size': 14, 'font-family': 'Tahoma'}
+                                                          'font-size': 15, 'font-family': 'Tahoma'}
                                                           ),
                                     ], id='third-selector',
-                                            style={'margin-top': '-80px',
-                                                    'margin-left': '55%',
+                                            style={'margin-top': '0px',
+                                                    'margin-left': '10px',
                                                     'margin-right': '0px',
-                                                    'width': '25%',
+                                                    'width': '90%',
                                                    'height': '80px',
                                                    'background-color': '#B3D5FA',
                                                    'float': 'center',
@@ -605,22 +609,23 @@ app.layout = html.Div(children=[
                                       # Checkbox for selecting only positions with disclosed salary 
 
                                     html.Div(children=[
-                                              #html.Br(),
+                                              
                                               dcc.Checklist(id='salary_filter',
                                                               options=['Enable Salary Range Selection'],
                                                               inline=True,
-                                                              style={'textAlign': 'left', 'color': 'navy',
-                                                              'font-size': 15, 'font-family': 'Tahoma'}
+                                                              style={'textAlign': 'left', 'color': 'navy', 'font-weight': 'bold',
+                                                              'font-size': 17, 'font-family': 'Tahoma'}
                                                               ),
-                                              html.Label("(Displays Only Positions With Disclosed Salary)",
+                                              html.Br(),
+                                              html.Label("(Displays only positions with disclosed salary)",
                                                         style={'textAlign': 'center', 'color': 'navy',
-                                                          'font-size': 12, 'font-family': 'Tahoma'}
+                                                          'font-size': 15, 'font-family': 'Tahoma'}
                                                         ),
                                     ], id='fourth-selector',
-                                            style={'margin-top': '-60px',
-                                                    'margin-left': '82%',
+                                            style={'margin-top': '10px',
+                                                    'margin-left': '10px',
                                                     'margin-right': '10px',
-                                                    'width': '18%',
+                                                    'width': '90%',
                                                    'height': '80px',
                                                    'background-color': '#B3D5FA',
                                                    'float': 'center',
@@ -629,46 +634,63 @@ app.layout = html.Div(children=[
                                       
                                       # Range Slider for Salary selection
 
-                                      html.Br(),
 
                                     html.Div(children=[
-                                              html.Label("Salary Range Selection (MXN):",
-                                                        style={'textAlign': 'left', 'color': 'navy',
-                                                          'font-size': 15, 'font-family': 'Tahoma'}
-                                                        ),
+                                              html.Div(
+                                              html.Label("Salary Range (MXN):",
+                                                        style={'textAlign': 'left', 'color': 'white', 'font-weight': 'bold',
+                                                          'font-size': 17, 'font-family': 'Tahoma'}
+                                                        ), style={'background-color': dropdown_bg_color,}
+                                              ),
+                                              
+                                              html.Div(
                                               dcc.RangeSlider(id='salary_slider',
-                                                              min=0, max=140000, step=1000,
-                                                              marks={0:  {'label': '$0', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     20000: {'label': '$20,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     40000: {'label': '$40,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     60000: {'label': '$60,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     80000: {'label': '$80,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     100000: {'label': '$100,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     120000: {'label': '$120,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}},
-                                                                     140000: {'label': '$140,000', 'style': {'font-size': 16, 'font-family': 'Tahoma'}}
+                                                              min=0, max=100000, step=10000,
+                                                              marks={0:  {'label': '$0', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},                                                                     
+                                                                     30000: {'label': '$30k', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},
+                                                                     60000: {'label': '$60k', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},
+                                                                     90000: {'label': '$90k', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},                                                                     
                                                                      },
                                                               value=[min_salary, max_salary]
-                                                              ),
+                                                              ), style={'background-color': 'white',}
+                                              ),
                                     ], id='fifth-selector',
-                                            style={'margin-top': '-50px',
-                                                    'margin-left': '0.5%',
-                                                    'margin-right': '0.5%',
-                                                    'width': '98%',
-                                                   'height': '50px',
+                                            style={'margin-top': '50px',
+                                                    'margin-left': '10px',
+                                                    'margin-right': '0',
+                                                    'width': '90%',
+                                                   'height': '80px',
                                                    'background-color': '#B3D5FA',
                                                    'float': 'center',
                                                    }
                                     ),
-                                                                                           
+                                  
+                                  html.Div(children=[
+                                        # html.P("This Dashboard shows the Data Jobs demand and salaries in Mexico in November 2023.",
+                                        #                                           style={'textAlign': 'center', 'color': 'black',
+                                        #                                                 'font-size': 14, 'font-family': 'Tahoma'}),
+                                      
+                                      html.P("Data source:",
+                                              style={'textAlign': 'center', 'color': 'navy', 'font-weight': 'bold',
+                                                     'font-size': 17, 'font-family': 'Tahoma'}),
+                                      html.P("Data was collected on 26 November 2023 from the OCC website.",
+                                              style={'textAlign': 'center', 'color': 'navy',
+                                                     'font-size': 15, 'font-family': 'Tahoma'}),
+                                        ], style={'margin-top': '20px','margin-right': '5%'}
+                                  )                                      
 
-                                ], id='top-container',
+                                ], id='left-container',
                                 style={'margin-top': '0px',
-                                        'margin-left': '10px',
+                                        'margin-left': '5px',
                                         'margin-right': '10px',
-                                        'width': '99%',
-                                       'height': '150px',
+                                        'width': '14%',
+                                       'height': '700px',
                                        'background-color': '#B3D5FA', 
                                        'float': 'center', 
+                                       'border-top-right-radius': '70px',
+                                       'border-bottom-right-radius': '70px',
+                                       'border-color': '#2471a3',
+                                       'border-width': '10px',
                                        }
                                 ),
 
