@@ -92,50 +92,63 @@ def plot_pie_chart(df):
     return demand_job_plot
 
 # Sample size and Avg Salary: Card
-def plot_card(df):
-
-    sample_size = len(df)
-
+def plot_card_salary(df):
+  
     avg_salary = np.mean(df['Salary'])
 
-    card = go.Figure()
+    card_salary = go.Figure()
 
-    card.add_trace(go.Indicator(
+    card_salary.add_trace(go.Indicator(
         mode="number",
         value=avg_salary,
-        title={
-            "text": "<b>Mean Monthly Salary (MXN)</b>",
-            "font": {"size": 15,'color': dark_bg_color},          
-        },
+        # title={
+        #     "text": "<b>Mean Monthly Salary (MXN)</b>",
+        #     "font": {"size": 15,'color': dark_bg_color},          
+        # },
         number={"font": {"size": 30}},
         domain = {'row': 0, 'column': 1})
     )
 
-    card.add_trace(go.Indicator(
+    card_salary.update_layout(paper_bgcolor = "#B3D5FA",
+                        grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
+                       width = 200,
+                        height = 55,
+                       margin = {'t': 5, 'r': 0, 'l': 0, 'b': 0}
+                      )
+
+    return card_salary
+
+
+def plot_card_demand(df):
+
+    sample_size = len(df)   
+
+    card_demand = go.Figure()
+
+    card_demand.add_trace(go.Indicator(
         mode="number",
         value=sample_size,
-        title={
-            "text": "<b>Number of Data Jobs</b>",
-            "font": {"size": 15, 'color': dark_bg_color}
-            },
+        # title={
+        #     "text": "<b>Number of Data Jobs</b>",
+        #     "font": {"size": 15, 'color': 'dark_bg_color'}
+        #     },
         number={"font": {"size": 30}},
         domain = {'row': 1, 'column': 1})
     )
 
-    card.update_layout(paper_bgcolor = "#B3D5FA",
-                        grid = {'rows': 2, 'columns': 1, 'pattern': "independent"},
-                       width = 250,
-                        height = 150,
-                       margin = {'t': 25, 'r': 0, 'l': 0, 'b': 0}
+    card_demand.update_layout(paper_bgcolor = "#B3D5FA",
+                        grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
+                       width = 200,
+                        height = 55,
+                       margin = {'t': 5, 'r': 0, 'l': 0, 'b': 0}
                       )
 
-    return card
-
+    return card_demand
 
 # Company Demand: Treemap
 def plot_treemap(df):
 
-    top = 15
+    top = 10
 
     company_df =  (df.groupby(by='Company', as_index=False)['Job'].count()
                   .sort_values(by = 'Job', ascending = False)
@@ -151,7 +164,7 @@ def plot_treemap(df):
                                      color = 'Vacancies', 
                                      color_continuous_scale=px.colors.sequential.Blues,
                                      title= f'Top {top} Companies Demanding Data Jobs',
-                                     height= 550,
+                                     height= 450,
                                      width = 450,
 
                                     )
@@ -165,7 +178,7 @@ def plot_treemap(df):
 # Alternative: Company Demand: Bar Chart
 def plot_barchart(df):
 
-    top = 30
+    top = 10
 
     company_df = (df.groupby(by = 'Company', as_index= False)['Job'].count()
                   .sort_values(by = 'Job', ascending = False)
@@ -180,7 +193,7 @@ def plot_barchart(df):
                                 #color = 'Vacancies', 
                                 color_continuous_scale=px.colors.sequential.Blues,
                                 #text="Vacancies",
-                                height=720,
+                                height=550,
                                 title= f'Top {top} Companies Demanding Data Jobs',
                                 opacity = 0.7)
 
@@ -331,7 +344,7 @@ def plot_heatmap(df):
                                             z = 'Salary',
                                             histfunc="avg", 
                                             color_continuous_scale="Blues",
-                                            height=600,
+                                            height=500,
                                             title='Salary Per Company And Data Job Category',
                                             labels={"Job": "Data Job Category"},                                         
                                             #text_auto=True
@@ -415,7 +428,7 @@ def plot_contour(df):
                                               z='Salary',
                                               histfunc="avg", 
                                               color_discrete_sequence=px.colors.sequential.Blues_r,
-                                              height=600,
+                                              height=500,
                                               title='Salary Per Location And Data Job Category',
                                               labels={
                                                         "State": "Location",
@@ -647,7 +660,7 @@ app.layout = html.Div(children=[
                                               
                                               html.Div(
                                               dcc.RangeSlider(id='salary_slider',
-                                                              min=0, max=100000, step=10000,
+                                                              min=0, max=100000, step=2000,
                                                               marks={0:  {'label': '$0', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},                                                                     
                                                                      30000: {'label': '$30k', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},
                                                                      60000: {'label': '$60k', 'style': {'font-size': 17, 'font-family': 'Tahoma'}},
@@ -702,15 +715,44 @@ app.layout = html.Div(children=[
 
                                           # First Plot
                                           html.Div(children=[
-                                          
-                                            # Card
-                                            dcc.Graph(id='card'),
+                                             
 
-                                        ], id='card-container',
-                                            style={'margin-top': '0px',
-                                                  'margin-left': '10%',
-                                                  #'width': '300px',
-                                                  #'height': '300px',
+                                          html.Div(
+                                             html.Label(" Mean Monthly Salary:", className='dropdown-labels',
+                                                              style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', 'text-shadow': '0 0 2px #fff',
+                                                              'font-size': 17, 'font-family': 'Tahoma'}
+                                                              ), style={'background-color': dark_bg_color, 'width': '200px'}
+                                          ),
+                                            # Card
+                                            dcc.Graph(id='card_salary'),
+
+                                            
+
+                                        ], id='card-container-1',
+                                            style={'margin-top': '20px',
+                                                  'margin-left': '2%',
+                                                  #'width': '250px',
+                                                  #'height': '100px',
+                                                  }
+                                          
+                                                ),
+                                        html.Div([
+                                          html.Div(
+                                             html.Label(" Number of Data Jobs:", className='dropdown-labels',
+                                                              style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', 'text-shadow': '0 0 2px #fff',
+                                                              'font-size': 17, 'font-family': 'Tahoma'}
+                                                              ), style={'background-color': dark_bg_color, 'width': '200px'}
+                                          ),
+                                            # Card
+                                            dcc.Graph(id='card_demand'),
+
+                                            
+
+                                        ], id='card-container-2',
+                                            style={'margin-top': '-76px',
+                                                  'margin-left': '19%',
+                                                  #'width': '250px',
+                                                  #'height': '100px',
                                                   }
                                           
                                                 ),
@@ -735,7 +777,7 @@ app.layout = html.Div(children=[
                                                       dcc.Graph(id='salary_job_plot'),
                                               
                                               ], id='Boxplot',
-                                                style={'margin-top': '-540px',
+                                                style={'margin-top': '-470px',
                                                         'margin-left': '35.5%',
                                                         'width': '33%',
                                                         'height': '400px',                                                                                                            
@@ -774,7 +816,7 @@ app.layout = html.Div(children=[
                                                 dcc.Graph(id='demand_company_plot'),
 
                                                 ], id='Treemap',
-                                                style={'margin-top': '120px',
+                                                style={'margin-top': '60px',
                                                         'margin-left': '-1%',
                                                         'width': '34%',
                                                         'height': '720px',
@@ -788,7 +830,7 @@ app.layout = html.Div(children=[
                                                     dcc.Graph(id='salary_company_plot'),
 
                                                     ], id='Heatmap',
-                                                    style={'margin-top': '-800px',
+                                                    style={'margin-top': '-740px',
                                                             'margin-left': '31%',
                                                             'width': '36%',
                                                             'height': '600px',
@@ -822,7 +864,7 @@ app.layout = html.Div(children=[
                                         'margin-left': '15%',
                                         'margin-right': '1px',
                                         'width': '85%',
-                                       'height': '930px',
+                                       'height': '820px',
                                        'background-color': 'aliceblue', 
                                        }
                                 ),
@@ -851,7 +893,8 @@ app.layout = html.Div(children=[
                Output(component_id='salary_job_plot', component_property='figure'),
                Output(component_id='salary_company_plot', component_property='figure'),
                Output(component_id='salary_location_plot', component_property='figure'),
-               Output(component_id='card', component_property='figure')],
+               Output(component_id='card_salary', component_property='figure'),
+               Output(component_id='card_demand', component_property='figure')],
               [Input(component_id='job_dropdown', component_property='value'),
                Input(component_id='location_dropdown', component_property='value'),
                Input(component_id='company_dropdown', component_property='value'),
@@ -884,7 +927,8 @@ def update_output(job, location, company, salary, salary_filter):
     salary_job_plot = plot_boxplot(dff)
     salary_company_plot = plot_heatmap(dff)
     salary_location_plot = plot_contour(dff)
-    card = plot_card(dff)
+    card_demand = plot_card_demand(dff)
+    card_salary = plot_card_salary(dff)
 
   else:
 
@@ -897,7 +941,8 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
         
         elif ('All' in (job and location)) and ('All' not in company):
           dff = dff[dff.Company.isin(company)]
@@ -908,7 +953,8 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
         
         elif ('All' in (company and job)) and ('All' not in location):
           dff = dff[dff.Location.isin(location)]
@@ -919,7 +965,8 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
         
         elif ('All' in job) and ('All' not in (company and location)):
           dff = dff[(dff.Company.isin(company)) & (dff.Location.isin(location))]
@@ -930,7 +977,8 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
 
         elif ('All' in location) and ('All' not in (company and job)):
           dff = dff[(dff.Company.isin(company)) & (dff.Job.isin(job))]
@@ -941,7 +989,8 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
 
         elif ('All' in company) and ('All' not in (location and job)):
           dff = dff[(dff.Location.isin(location)) & (dff.Job.isin(job))]
@@ -952,7 +1001,8 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
 
         elif 'All' not in (company and location and job):
           dff = dff[(dff.Job.isin(job)) & (dff.Location.isin(location)) & (dff.Company.isin(company))]
@@ -963,12 +1013,13 @@ def update_output(job, location, company, salary, salary_filter):
           salary_job_plot = plot_boxplot(dff)
           salary_company_plot = plot_heatmap(dff)
           salary_location_plot = plot_contour(dff)
-          card = plot_card(dff)
+          card_demand = plot_card_demand(dff)
+          card_salary = plot_card_salary(dff)
         
         else:
           raise PreventUpdate 
 
-  return demand_job_plot, demand_company_plot, demand_location_plot, salary_job_plot, salary_company_plot, salary_location_plot, card
+  return demand_job_plot, demand_company_plot, demand_location_plot, salary_job_plot, salary_company_plot, salary_location_plot, card_salary, card_demand
 
 # Run the app
 if __name__ == '__main__':
