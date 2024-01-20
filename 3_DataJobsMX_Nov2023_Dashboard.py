@@ -285,20 +285,21 @@ def plot_cloropleth(df):
                                         #title='Demand of Data Jobs per Mexican State',
                                         labels={'Percentage':'National <br>Demand %'}
                                         )
-    demand_location_plot.update_layout(margin={"r":0,"t":0,"l":0,"b":0}, 
-                                      transition_duration=300,
-                                      paper_bgcolor="rgba(0,0,0,0)", 
-                                      plot_bgcolor="rgba(0,0,0,0)", 
-                                      geo_bgcolor = "rgba(0,0,0,0)")
+     
     demand_location_plot.update_geos(fitbounds="locations", 
                                     visible=False)
-    demand_location_plot.update_layout(transition_duration=400, 
-                                      title_x=0.5)
+    
+    demand_location_plot.update_layout(margin={"r":0,"t":40,"l":0,"b":15}, 
+                                      transition_duration=400,
+                                      paper_bgcolor="rgba(0,0,0,0)", 
+                                      plot_bgcolor="rgba(0,0,0,0)", 
+                                      geo_bgcolor = "rgba(0,0,0,0)",                                      
+                                      title_x=0.5)   
     
     demand_location_plot.add_annotation(
                                         xanchor="center",
                                         yanchor='top',
-                                        yshift=160,
+                                        yshift=180,
                                         xshift=40,
                                         font={'size':17},
                                         text="<b>Demand of Data Jobs by Location</b>", # text
@@ -339,7 +340,7 @@ def plot_boxplot(df):
                                   title_x=0.5, 
                                   paper_bgcolor="rgba(0,0,0,0)", 
                                   plot_bgcolor='#e1e7ff',
-                                  margin={"r":0,"t":50,"l":0,"b":0})
+                                  margin={"r":0,"t":50,"l":40,"b":0})
     salary_job_plot.update_yaxes(tickformat = '$,~s')
 
     return salary_job_plot
@@ -830,7 +831,7 @@ app.layout = html.Div(children=[
                                               ], id='Boxplot',
                                                 style={'margin-top': '-370px',
                                                         'margin-left': '32.5%',
-                                                        'width': '31%',
+                                                        'width': '33%',
                                                         'height': '370px',
                                                         'box-shadow': '1px 1px 1px '+shadow_color,
                                                         'border-radius': '20px',    
@@ -844,10 +845,13 @@ app.layout = html.Div(children=[
                                                 # Location Demand Plot: Map
                                                 dcc.Graph(id='demand_location_plot'),
                                                 ], id='Map',
-                                                style={'margin-top': '-390px',
-                                                        'margin-left': '62%',
-                                                        'width': '39%',
-                                                        'height': '290px',
+                                                style={'margin-top': '-370px',
+                                                        'margin-left': '66%',
+                                                        'width': '34%',
+                                                        'height': '370px',
+                                                         'box-shadow': '1px 1px 1px '+shadow_color,
+                                                        'border-radius': '20px',    
+                                                        'background-color': 'White',          
                                                         }
                                                 ),
                                     ], id='middle-container',
