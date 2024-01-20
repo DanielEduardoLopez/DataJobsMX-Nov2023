@@ -44,8 +44,12 @@ category_order = ['ML Engineer',
                   'BI Analyst',
                   'Data Analyst']
 
-dark_bg_color= px.colors.sequential.Blues_r[0] #'#001c7a'
+# Color settings
+light_bg_color='#f0f0f0' # platinum
 shadow_color='#adadad'
+dash_theme=px.colors.sequential.Blues#px.colors.sequential.PuBu
+dash_theme_r=px.colors.sequential.Blues_r#px.colors.sequential.PuBu_r
+dark_bg_color= dash_theme_r[0]
 
 # Plotting functions
 
@@ -61,17 +65,17 @@ def plot_pie_chart(df):
                             names='Job', 
                             color = 'Job', 
                             hole = 0.7,  
-                            color_discrete_sequence=px.colors.sequential.Blues_r,
-                            height=350,
+                            color_discrete_sequence=dash_theme_r,
+                            height=250,
                             title='<b>Demand of Data Jobs Per Category</b>'
                             )
     
     demand_job_plot.update_traces(hoverinfo='label+percent+name', 
                                   textinfo='percent',                                 
-                                  texttemplate='%{percent:.1%}',
+                                  texttemplate='%{percent:.0%}',
                                   textfont_size=16,
                                   direction ='clockwise',                                
-                                  marker=dict(colors=pie_colors, line=dict(color="rgba(0,0,0,0)", width=4))
+                                  marker=dict(colors=dash_theme_r, line=dict(color="rgba(0,0,0,0)", width=4))
                                   )
     
     demand_job_plot.update_layout(transition_duration=400, 
@@ -83,10 +87,11 @@ def plot_pie_chart(df):
                                       y=0.01,
                                       #xanchor="right",
                                       x=0.99,
-                                      bgcolor='#d6eaf8',
-                                      bordercolor='#2471a3',
-                                      borderwidth=1.5
-                                      )
+                                      #bgcolor='#d6eaf8',
+                                      bordercolor="rgba(0,0,0,0)"#'#2471a3',#blue
+                                      #borderwidth=1.5
+                                      ),
+                                  margin={"r":0,"t":80,"l":0,"b":0}
                                   )
     
     return demand_job_plot
@@ -109,7 +114,7 @@ def plot_card_salary(df):
         domain = {'row': 0, 'column': 1})
     )
 
-    card_salary.update_layout(paper_bgcolor = "#d6eaf8", #B3D5FA",
+    card_salary.update_layout(paper_bgcolor = dash_theme[1],
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
                        width = 200,
                         height = 55,                        
@@ -138,7 +143,7 @@ def plot_card_demand(df):
     )
  
 
-    card_demand.update_layout(paper_bgcolor = "#d6eaf8", #B3D5FA",
+    card_demand.update_layout(paper_bgcolor = dash_theme[1],
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
                        width = 200,
                         height = 55,
@@ -165,7 +170,7 @@ def plot_treemap(df):
                                      path = [px.Constant("."), 'Company'], 
                                      values='Vacancies', 
                                      color = 'Vacancies', 
-                                     color_continuous_scale=px.colors.sequential.Blues,
+                                     color_continuous_scale=dash_theme,
                                      title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
                                      height= 450,
                                      #width = 450,
@@ -194,13 +199,13 @@ def plot_barchart(df):
                                 x='Vacancies', 
                                 y='Company',
                                 #color = 'Vacancies', 
-                                color_continuous_scale=px.colors.sequential.Blues,
+                                color_continuous_scale=dash_theme,
                                 #text="Vacancies",
                                 height=550,
                                 title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
                                 opacity = 0.7)
 
-    demand_company_plot.update_traces(marker_color= px.colors.sequential.Blues[7], 
+    demand_company_plot.update_traces(marker_color= dash_theme[7], 
                                       marker_line_color='white', 
                                       textfont_size=11, 
                                       textangle=0,
@@ -272,7 +277,7 @@ def plot_cloropleth(df):
                                         geojson = 'https://raw.githubusercontent.com/isaacarroyov/data_visualization_practice/master/Python/visualizing_mexican_wildfires_tds/data/states_mx.json', 
                                         locations='ID', 
                                         color='Percentage',
-                                        color_continuous_scale="Blues",
+                                        color_continuous_scale=dash_theme,
                                         scope="north america",
                                         height= 370,
                                         #title='Demand of Data Jobs per Mexican State',
@@ -313,7 +318,7 @@ def plot_boxplot(df):
                             y = "Salary", 
                             color = "Job", 
                             points="all", 
-                            color_discrete_sequence=px.colors.sequential.Blues_r,
+                            color_discrete_sequence=dash_theme_r,
                             category_orders={"Job": ['ML Engineer',
                                                     'Data Architect', 
                                                     'Data Engineer', 
@@ -359,7 +364,7 @@ def plot_heatmap(df):
                                             x = 'Job', 
                                             z = 'Salary',
                                             histfunc="avg", 
-                                            color_continuous_scale="Blues",
+                                            color_continuous_scale=dash_theme,
                                             height=500,
                                             title='<b>Salary Per Company And Data Job Category</b>',
                                             labels={"Job": "Data Job Category"},                                         
@@ -443,7 +448,7 @@ def plot_contour(df):
                                               x='Job', 
                                               z='Salary',
                                               histfunc="avg", 
-                                              color_discrete_sequence=px.colors.sequential.Blues_r,
+                                              color_discrete_sequence=dash_theme_r,
                                               height=500,
                                               title='<b>Salary Per Location And Data Job Category</b>',
                                               labels={
@@ -454,7 +459,7 @@ def plot_contour(df):
 
     salary_location_plot.update_traces(contours_coloring="fill", 
                                       contours_showlabels = True, 
-                                      colorscale = 'Blues', 
+                                      colorscale = dash_theme, 
                                       colorbar_tickformat='$,~s',
                                       colorbar_title_text='Avg. Mth. <br>Salary (MXN)')
 
@@ -700,17 +705,17 @@ app.layout = html.Div(children=[
                                   html.Div(children=[
                                                                      # Adding Author
                                         html.P("© Daniel Eduardo López",
-                                                style={'textAlign': 'center', 'color': 'navy',
+                                                style={'textAlign': 'center', 'color': dash_theme_r[0],
                                                       'font-size': 16, 'font-family': 'Tahoma'}),
 
                                         dcc.Link(html.A('LinkedIn'), href="https://www.linkedin.com/in/daniel-eduardo-lopez",
-                                                style={'textAlign': 'center', 'color': 'navy',
+                                                style={'textAlign': 'center', 'color': dash_theme_r[0],
                                                       'font-size': 12, 'font-family': 'Tahoma',
                                                       'margin-top': '-5px',
                                                       'display': 'block'
                                                       }),
                                         dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez",
-                                                style={'textAlign': 'center', 'color': 'navy',
+                                                style={'textAlign': 'center', 'color': dash_theme_r[0],
                                                       'font-size': 12, 'font-family': 'Tahoma',
                                                       'margin': 'auto',
                                                       'display': 'block'}),
@@ -731,6 +736,7 @@ app.layout = html.Div(children=[
                                        'border-top-right-radius': '70px',
                                        'border-bottom-right-radius': '70px',                                                                              
                                         'box-shadow': '5px 5px 5px '+shadow_color,
+                                        
                                        }
                                 ),
 
@@ -758,8 +764,10 @@ app.layout = html.Div(children=[
                                                   'margin-left': '2%',
                                                   'border-color': dark_bg_color,
                                                   'border-width': '2px',
-                                                  #'width': '250px',
+                                                  'box-shadow': '4px 4px 4px '+shadow_color,
+                                                  'width': '200px',
                                                   #'height': '100px',
+                                                  'border-radius': '5px',
                                                   }
                                           
                                                 ),
@@ -780,7 +788,8 @@ app.layout = html.Div(children=[
                                                   'margin-left': '19%',
                                                   'border-color': dark_bg_color,
                                                   'border-width': '2px',
-                                                  #'width': '250px',
+                                                  'box-shadow': '4px 4px 4px '+shadow_color,
+                                                  'width': '200px',                                                  
                                                   #'height': '100px',
                                                   }
                                           
@@ -792,10 +801,13 @@ app.layout = html.Div(children=[
                                                 dcc.Graph(id='demand_job_plot'),                                   
                                         
                                                 ], id='Donut_chart',
-                                                  style={'margin-top': '-10px',
-                                                          'margin-left': '-6%',
-                                                          'width': '40%',
-                                                          'height': '400px',                                                                                                            
+                                                  style={'margin-top': '25px',
+                                                          'margin-left': '0px',
+                                                          'width': '32%',
+                                                          'height': '270px',
+                                                          #'box-shadow': '4px 4px 4px '+shadow_color,
+                                                          'border-radius': '20px',    
+                                                          'background-color': 'White',
                                                           }      
                                         ),
 
@@ -904,7 +916,7 @@ app.layout = html.Div(children=[
                            style={'width': '100%',
                                   'height': '100%',
                                   'overflow': 'hidden',
-                                  'background-color': '#f0f0f0', #f2ffe3 soft green
+                                  'background-color': light_bg_color, 
                                  }
                         )
 
