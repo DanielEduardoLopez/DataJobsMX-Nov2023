@@ -114,7 +114,7 @@ def plot_card_salary(df):
         domain = {'row': 0, 'column': 1})
     )
 
-    card_salary.update_layout(paper_bgcolor = dash_theme[1],
+    card_salary.update_layout(paper_bgcolor = "rgba(0,0,0,0)",
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
                        width = 200,
                         height = 55,                        
@@ -143,7 +143,7 @@ def plot_card_demand(df):
     )
  
 
-    card_demand.update_layout(paper_bgcolor = dash_theme[1],
+    card_demand.update_layout(paper_bgcolor = "rgba(0,0,0,0)",
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
                        width = 200,
                         height = 55,
@@ -749,10 +749,13 @@ app.layout = html.Div(children=[
                                              
 
                                           html.Div(
-                                             html.Label(" Mean Monthly Salary:", className='dropdown-labels',
+                                             html.Label(". Mean Monthly Salary", className='dropdown-labels',
                                                               style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', 'text-shadow': '0 0 2px #fff',
-                                                              'font-size': 17, 'font-family': 'Tahoma'}
-                                                              ), style={'background-color': dark_bg_color, 'width': '200px'}
+                                                              'font-size': 17, 'font-family': 'Tahoma', 'margin': 'auto'}
+                                                              ), style={'background-color': dark_bg_color, 'width': '200px',
+                                                                        'border-top-right-radius': '10px',
+                                                                        'border-top-left-radius': '10px',
+                                                                        }
                                           ),
                                             # Card
                                             dcc.Graph(id='card_salary'),
@@ -762,21 +765,24 @@ app.layout = html.Div(children=[
                                         ], id='card-container-1',
                                             style={'margin-top': '20px',
                                                   'margin-left': '2%',
-                                                  'border-color': dark_bg_color,
+                                                  'background-color': 'white',
                                                   'border-width': '2px',
-                                                  'box-shadow': '4px 4px 4px '+shadow_color,
+                                                  'box-shadow': '1px 1px 1px '+shadow_color,
                                                   'width': '200px',
                                                   #'height': '100px',
-                                                  'border-radius': '5px',
+                                                  'border-radius': '10px',
                                                   }
                                           
                                                 ),
                                         html.Div([
                                           html.Div(
-                                             html.Label(" Number of Data Jobs:", className='dropdown-labels',
+                                             html.Label(". Number of Data Jobs", className='dropdown-labels',
                                                               style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', 'text-shadow': '0 0 2px #fff',
                                                               'font-size': 17, 'font-family': 'Tahoma'}
-                                                              ), style={'background-color': dark_bg_color, 'width': '200px'}
+                                                              ), style={'background-color': dark_bg_color, 'width': '200px',
+                                                                        'border-top-right-radius': '10px',
+                                                                        'border-top-left-radius': '10px',
+                                                                        }
                                           ),
                                             # Card
                                             dcc.Graph(id='card_demand'),
@@ -786,11 +792,12 @@ app.layout = html.Div(children=[
                                         ], id='card-container-2',
                                             style={'margin-top': '-76px',
                                                   'margin-left': '19%',
-                                                  'border-color': dark_bg_color,
+                                                  'background-color': 'white',
                                                   'border-width': '2px',
-                                                  'box-shadow': '4px 4px 4px '+shadow_color,
+                                                  'box-shadow': '1px 1px 1px '+shadow_color,
                                                   'width': '200px',                                                  
                                                   #'height': '100px',
+                                                  'border-radius': '10px',
                                                   }
                                           
                                                 ),
@@ -805,7 +812,7 @@ app.layout = html.Div(children=[
                                                           'margin-left': '0px',
                                                           'width': '32%',
                                                           'height': '270px',
-                                                          #'box-shadow': '4px 4px 4px '+shadow_color,
+                                                          'box-shadow': '1px 1px 1px '+shadow_color,
                                                           'border-radius': '20px',    
                                                           'background-color': 'White',
                                                           }      
