@@ -45,7 +45,7 @@ category_order = ['ML Engineer',
                   'Data Analyst']
 
 # Color settings
-light_bg_color='#f0f0f0' # platinum
+light_bg_color= '#ececec'#'#f0f0f0' # platinum
 shadow_color='#adadad'
 dash_theme=px.colors.sequential.Blues#px.colors.sequential.PuBu
 dash_theme_r=px.colors.sequential.Blues_r#px.colors.sequential.PuBu_r
@@ -172,7 +172,7 @@ def plot_treemap(df):
                                      color = 'Vacancies', 
                                      color_continuous_scale=dash_theme,
                                      title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
-                                     height= 410,
+                                     height= 380,
                                      #width = 450,
 
                                     )
@@ -180,7 +180,7 @@ def plot_treemap(df):
     demand_company_plot.update_layout(transition_duration=400, 
                                       paper_bgcolor="rgba(0,0,0,0)", 
                                       plot_bgcolor="rgba(0,0,0,0)",
-                                      margin={"r":0,"t":50,"l":20,"b":20}
+                                      margin={"r":0,"t":80,"l":20,"b":20}
                                       )
       
     return demand_company_plot
@@ -294,7 +294,7 @@ def plot_boxplot(df):
                                     "Salary": "Mean Monthly Salary (MXN)",
                                     "Job": "Data Job Category"},
                             title='<b>Salary Per Data Job Category</b>',
-                            height=360
+                            height=400
                             )
     salary_job_plot.update_traces(showlegend=False)
     salary_job_plot.update_layout(transition_duration=400, 
@@ -330,16 +330,18 @@ def plot_heatmap(df):
                                             z = 'Salary',
                                             histfunc="avg", 
                                             color_continuous_scale=dash_theme,
-                                            height=500,
+                                            height=440,
                                             title='<b>Salary Per Company And Data Job Category</b>',
-                                            labels={"Job": "Data Job Category"},                                         
+                                            labels={"Job": ""},                                         
                                             #text_auto=True
                                             )
     salary_company_plot.update_layout(transition_duration=400, 
                                       title_x=0.5, 
                                       coloraxis_colorbar=dict(title="Avg. Mth. <br>Salary (MXN)"),
                                       paper_bgcolor="rgba(0,0,0,0)", 
-                                      plot_bgcolor="rgba(0,0,0,0)")
+                                      plot_bgcolor="rgba(0,0,0,0)",
+                                      margin={"r":20,"t":50,"l":20,"b":40}
+                                      )
 
     salary_company_plot.update_coloraxes(colorbar_tickformat = '$,~s')
     #salary_company_plot.update_traces(texttemplate="$%{z:,.0f}")
@@ -414,11 +416,11 @@ def plot_contour(df):
                                               z='Salary',
                                               histfunc="avg", 
                                               color_discrete_sequence=dash_theme_r,
-                                              height=500,
+                                              height=440,
                                               title='<b>Salary Per Location And Data Job Category</b>',
                                               labels={
                                                         "State": "Location",
-                                                        'Job': 'Data Job Category'
+                                                        'Job': ''
                                                         }
                                                 )
 
@@ -432,7 +434,9 @@ def plot_contour(df):
                                       title_x=0.5, 
                                       coloraxis_colorbar=dict(title="Vacancies"),
                                       paper_bgcolor="rgba(0,0,0,0)", 
-                                      plot_bgcolor="rgba(0,0,0,0)")
+                                      plot_bgcolor="rgba(0,0,0,0)",
+                                      margin={"r":20,"t":50,"l":20,"b":40}
+                                      )
 
     return salary_location_plot
 
@@ -461,9 +465,9 @@ app.layout = html.Div(children=[
                                                             'float': 'center',
                                                         }),
                                                    html.H1("Dashboard of Data Jobs in Mexico",
-                                                  style={'textAlign': 'center', 'color': '#3a3a3a', #'#0025a1',
+                                                  style={'textAlign': 'center', 'color': '#002c5b', #'#3a3a3a', #'#0025a1',
                                                         'font-size': 40, 'font-family': 'Tahoma',
-                                                        'text-shadow': '0 0 5px #adadad',
+                                                        'text-shadow': '0 0 3px #848484',
                                                         'margin-top': '-65px'
                                                         }),                                               
                                                     
@@ -786,8 +790,8 @@ app.layout = html.Div(children=[
                                           # Second plot
                                           html.Div(children=[
                                           
-                                                # Job-Salary Plot: Boxplot
-                                                      dcc.Graph(id='salary_job_plot'),
+                                                # Job-Salary Plot: Treemap
+                                                      dcc.Graph(id='demand_company_plot'),
                                               
                                               ], id='Boxplot',
                                                 style={'margin-top': '-370px',
@@ -831,8 +835,8 @@ app.layout = html.Div(children=[
                                                 # Fourth Plot
                                                 html.Div(children=[
 
-                                                # Company Demand Plot: Treemap
-                                                dcc.Graph(id='demand_company_plot'),
+                                                # Company Demand Plot: Boxplot
+                                                dcc.Graph(id='salary_job_plot'),
 
                                                 ], id='Treemap',
                                                 style={'margin-top': '80px',
@@ -852,10 +856,13 @@ app.layout = html.Div(children=[
                                                     dcc.Graph(id='salary_company_plot'),
 
                                                     ], id='Heatmap',
-                                                    style={'margin-top': '-760px',
-                                                            'margin-left': '32%',
-                                                            'width': '35%',
-                                                            'height': '600px',
+                                                    style={'margin-top': '-410px',
+                                                            'margin-left': '32.5%',
+                                                            'width': '32.7%',
+                                                            'height': '410px',
+                                                            'box-shadow': '1px 1px 1px '+shadow_color,
+                                                            'border-radius': '20px',    
+                                                            'background-color': 'White',      
                                                             }
                                                     ),
 
@@ -866,10 +873,13 @@ app.layout = html.Div(children=[
                                                     dcc.Graph(id='salary_location_plot'),
 
                                                     ], id='Contourmap',
-                                                    style={'margin-top': '-600px',
-                                                            'margin-left': '66%',
-                                                            'width': '35%',
-                                                            'height': '600px',
+                                                    style={'margin-top': '-410px',
+                                                            'margin-left': '65.7%',
+                                                            'width': '33.7%',
+                                                            'height': '410px',
+                                                            'box-shadow': '1px 1px 1px '+shadow_color,
+                                                            'border-radius': '20px',    
+                                                            'background-color': 'White',      
                                                             }
                                                     ),
 
@@ -1045,4 +1055,4 @@ def update_output(job, location, company, salary, salary_filter):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
