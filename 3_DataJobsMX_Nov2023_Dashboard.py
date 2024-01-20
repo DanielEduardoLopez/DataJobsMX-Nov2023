@@ -179,7 +179,9 @@ def plot_treemap(df):
     
     demand_company_plot.update_layout(transition_duration=400, 
                                       paper_bgcolor="rgba(0,0,0,0)", 
-                                      plot_bgcolor="rgba(0,0,0,0)")
+                                      plot_bgcolor="rgba(0,0,0,0)",
+                                      margin={"r":0,"t":80,"l":0,"b":0}
+                                      )
       
     return demand_company_plot
 
@@ -330,13 +332,14 @@ def plot_boxplot(df):
                                     "Salary": "Mean Monthly Salary (MXN)",
                                     "Job": "Data Job Category"},
                             title='<b>Salary Per Data Job Category</b>',
-                            height=350
+                            height=360
                             )
     salary_job_plot.update_traces(showlegend=False)
     salary_job_plot.update_layout(transition_duration=400, 
                                   title_x=0.5, 
                                   paper_bgcolor="rgba(0,0,0,0)", 
-                                  plot_bgcolor='#e1e7ff')
+                                  plot_bgcolor='#e1e7ff',
+                                  margin={"r":0,"t":50,"l":0,"b":0})
     salary_job_plot.update_yaxes(tickformat = '$,~s')
 
     return salary_job_plot
@@ -764,7 +767,7 @@ app.layout = html.Div(children=[
 
                                         ], id='card-container-1',
                                             style={'margin-top': '20px',
-                                                  'margin-left': '2%',
+                                                  'margin-left': '1%',
                                                   'background-color': 'white',
                                                   'border-width': '2px',
                                                   'box-shadow': '1px 1px 1px '+shadow_color,
@@ -791,7 +794,7 @@ app.layout = html.Div(children=[
 
                                         ], id='card-container-2',
                                             style={'margin-top': '-76px',
-                                                  'margin-left': '19%',
+                                                  'margin-left': '17%',
                                                   'background-color': 'white',
                                                   'border-width': '2px',
                                                   'box-shadow': '1px 1px 1px '+shadow_color,
@@ -825,10 +828,13 @@ app.layout = html.Div(children=[
                                                       dcc.Graph(id='salary_job_plot'),
                                               
                                               ], id='Boxplot',
-                                                style={'margin-top': '-500px',
-                                                        'margin-left': '35.5%',
-                                                        'width': '33%',
-                                                        'height': '400px',                                                                                                            
+                                                style={'margin-top': '-370px',
+                                                        'margin-left': '32.5%',
+                                                        'width': '31%',
+                                                        'height': '370px',
+                                                        'box-shadow': '1px 1px 1px '+shadow_color,
+                                                        'border-radius': '20px',    
+                                                        'background-color': 'White',                                                                                                            
                                                         }                                                
                                               ),
 
