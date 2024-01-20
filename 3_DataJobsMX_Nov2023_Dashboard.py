@@ -3,8 +3,8 @@
 """
 By Daniel Eduardo López
 Date: 14 January 2024
-GitHub: https://github.com/DanielEduardoLopez
 LinkedIn: https://www.linkedin.com/in/daniel-eduardo-lopez
+GitHub: https://github.com/DanielEduardoLopez
 """
 
 #!pip install dash
@@ -44,8 +44,8 @@ category_order = ['ML Engineer',
                   'BI Analyst',
                   'Data Analyst']
 
-dark_bg_color= '#001c7a'
-
+dark_bg_color= px.colors.sequential.Blues_r[0] #'#001c7a'
+shadow_color='#adadad'
 
 # Plotting functions
 
@@ -493,7 +493,7 @@ app.layout = html.Div(children=[
                                                    html.H1("Dashboard of Data Jobs in Mexico",
                                                   style={'textAlign': 'center', 'color': '#3a3a3a', #'#0025a1',
                                                         'font-size': 40, 'font-family': 'Tahoma',
-                                                        'text-shadow': '0 0 15px #fff',
+                                                        'text-shadow': '0 0 5px #adadad',
                                                         'margin-top': '-65px'
                                                         }),                                               
                                                     
@@ -501,7 +501,7 @@ app.layout = html.Div(children=[
                                                style={'margin-top': '-25px',
                                                       'width': '100%', 
                                                       'height': '110px', 
-                                                      'background-color': '#B3D5FA', #'#C0C0C0', 
+                                                      #'background-color': '#B3D5FA', #'#C0C0C0', 
                                                       'float': 'center', 
                                                       }                                               
                                         ),
@@ -519,6 +519,7 @@ app.layout = html.Div(children=[
                                                       'border-color': 'White',
                                                       'border-width': '1px',
                                                       'border-radius': '10px',
+                                                      'box-shadow': '3px 3px 3px '+shadow_color,
                                                       }  
                                               
                                         ),
@@ -561,7 +562,7 @@ app.layout = html.Div(children=[
                                                     'margin-right': '0px',
                                                     'width': '90%',
                                                    'height': '80px',
-                                                   'background-color': dark_bg_color,
+                                                   #'background-color': dark_bg_color,
                                                    'float': 'center',
                                                    }
                                     ),
@@ -590,7 +591,7 @@ app.layout = html.Div(children=[
                                                     'margin-right': '0px',
                                                     'width': '90%',
                                                    'height': '80px',
-                                                   'background-color': dark_bg_color,
+                                                   #'background-color': dark_bg_color,
                                                    'float': 'center',
                                                    }
                                     ),
@@ -619,7 +620,7 @@ app.layout = html.Div(children=[
                                                     'margin-right': '0px',
                                                     'width': '90%',
                                                    'height': '80px',
-                                                   'background-color': dark_bg_color,
+                                                   #'background-color': dark_bg_color,
                                                    'float': 'center',
                                                    }
                                     ),
@@ -644,7 +645,7 @@ app.layout = html.Div(children=[
                                                     'margin-right': '10px',
                                                     'width': '90%',
                                                    'height': '80px',
-                                                   'background-color': dark_bg_color,
+                                                   #'background-color': dark_bg_color,
                                                    'float': 'center',
                                                    }
                                     ),
@@ -677,7 +678,7 @@ app.layout = html.Div(children=[
                                                     'margin-right': '0',
                                                     'width': '90%',
                                                    'height': '80px',
-                                                   'background-color': dark_bg_color,
+                                                   #'background-color': dark_bg_color,
                                                    'float': 'center',
                                                    }
                                     ),
@@ -728,9 +729,8 @@ app.layout = html.Div(children=[
                                        'background-color': dark_bg_color, 
                                        'float': 'center', 
                                        'border-top-right-radius': '70px',
-                                       'border-bottom-right-radius': '70px',
-                                       'border-color': '#2471a3',
-                                       'border-width': '10px',
+                                       'border-bottom-right-radius': '70px',                                                                              
+                                        'box-shadow': '5px 5px 5px '+shadow_color,
                                        }
                                 ),
 
