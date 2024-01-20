@@ -172,7 +172,7 @@ def plot_treemap(df):
                                      color = 'Vacancies', 
                                      color_continuous_scale=dash_theme,
                                      title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
-                                     height= 450,
+                                     height= 410,
                                      #width = 450,
 
                                     )
@@ -180,48 +180,9 @@ def plot_treemap(df):
     demand_company_plot.update_layout(transition_duration=400, 
                                       paper_bgcolor="rgba(0,0,0,0)", 
                                       plot_bgcolor="rgba(0,0,0,0)",
-                                      margin={"r":0,"t":80,"l":0,"b":0}
+                                      margin={"r":0,"t":50,"l":20,"b":20}
                                       )
       
-    return demand_company_plot
-
-# Alternative: Company Demand: Bar Chart
-def plot_barchart(df):
-
-    top = 10
-
-    company_df = (df.groupby(by = 'Company', as_index= False)['Job'].count()
-                  .sort_values(by = 'Job', ascending = False)
-                  .rename(columns = {'Job': 'Vacancies'})[:top]
-                  .assign(Company= lambda d:d['Company'].map(lambda x: x[:25]))
-                )
-    company_df = company_df[company_df['Vacancies'] > 0]
-
-    demand_company_plot = px.bar(company_df.sort_values(by = 'Vacancies'), 
-                                x='Vacancies', 
-                                y='Company',
-                                #color = 'Vacancies', 
-                                color_continuous_scale=dash_theme,
-                                #text="Vacancies",
-                                height=550,
-                                title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
-                                opacity = 0.7)
-
-    demand_company_plot.update_traces(marker_color= dash_theme[7], 
-                                      marker_line_color='white', 
-                                      textfont_size=11, 
-                                      textangle=0,
-                                      textposition="outside", 
-                                      cliponaxis=False, 
-                                      hovertemplate=None)
-
-    demand_company_plot.update_layout(transition_duration=400, 
-                                      title_x=0.5, 
-                                      paper_bgcolor="rgba(0,0,0,0)", 
-                                      plot_bgcolor="#e1e7ff")
-
-    demand_company_plot.update_layout(hovermode="x unified")
-
     return demand_company_plot
 
 # Location Demand: Choropleth Map
@@ -859,7 +820,7 @@ app.layout = html.Div(children=[
                                             'margin-left': '5px',
                                             'margin-right': '5px',
                                             'width': '99%',
-                                          'height': '485px',
+                                          'height': '500px',
                                           'float': 'center',
                                           }
                                     ),
@@ -874,10 +835,13 @@ app.layout = html.Div(children=[
                                                 dcc.Graph(id='demand_company_plot'),
 
                                                 ], id='Treemap',
-                                                style={'margin-top': '60px',
-                                                        'margin-left': '-1%',
-                                                        'width': '33%',
-                                                        'height': '720px',
+                                                style={'margin-top': '80px',
+                                                        'margin-left': '0%',
+                                                        'width': '32%',
+                                                        'height': '410px',
+                                                        'box-shadow': '1px 1px 1px '+shadow_color,
+                                                        'border-radius': '20px',    
+                                                        'background-color': 'White',         
                                                         }                                                
                                                 ),                                 
 
