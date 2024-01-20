@@ -63,7 +63,7 @@ def plot_pie_chart(df):
                             hole = 0.7,  
                             color_discrete_sequence=px.colors.sequential.Blues_r,
                             height=350,
-                            title='Demand of Data Jobs Per Category'
+                            title='<b>Demand of Data Jobs Per Category</b>'
                             )
     
     demand_job_plot.update_traces(hoverinfo='label+percent+name', 
@@ -109,10 +109,10 @@ def plot_card_salary(df):
         domain = {'row': 0, 'column': 1})
     )
 
-    card_salary.update_layout(paper_bgcolor = "#B3D5FA",
+    card_salary.update_layout(paper_bgcolor = "#d6eaf8", #B3D5FA",
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
                        width = 200,
-                        height = 55,
+                        height = 55,                        
                        margin = {'t': 5, 'r': 0, 'l': 0, 'b': 0}
                       )
 
@@ -133,10 +133,12 @@ def plot_card_demand(df):
         #     "font": {"size": 15, 'color': 'dark_bg_color'}
         #     },
         number={"font": {"size": 30}},
-        domain = {'row': 1, 'column': 1})
+        domain = {'row': 1, 'column': 1}),
+        
     )
+ 
 
-    card_demand.update_layout(paper_bgcolor = "#B3D5FA",
+    card_demand.update_layout(paper_bgcolor = "#d6eaf8", #B3D5FA",
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
                        width = 200,
                         height = 55,
@@ -150,7 +152,8 @@ def plot_treemap(df):
 
     top = 10
 
-    company_df =  (df.groupby(by='Company', as_index=False)['Job'].count()
+    company_df =  (df.loc[lambda d: d['Company'] != 'Confidential']
+                  .groupby(by='Company', as_index=False)['Job'].count()
                   .sort_values(by = 'Job', ascending = False)
                   .rename(columns = {'Job': 'Vacancies'})[:top]
                   .assign(Company=lambda d:d['Company'].map(lambda x: x[:15]))
@@ -163,9 +166,9 @@ def plot_treemap(df):
                                      values='Vacancies', 
                                      color = 'Vacancies', 
                                      color_continuous_scale=px.colors.sequential.Blues,
-                                     title= f'Top {top} Companies Demanding Data Jobs',
+                                     title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
                                      height= 450,
-                                     width = 450,
+                                     #width = 450,
 
                                     )
     
@@ -194,7 +197,7 @@ def plot_barchart(df):
                                 color_continuous_scale=px.colors.sequential.Blues,
                                 #text="Vacancies",
                                 height=550,
-                                title= f'Top {top} Companies Demanding Data Jobs',
+                                title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
                                 opacity = 0.7)
 
     demand_company_plot.update_traces(marker_color= px.colors.sequential.Blues[7], 
@@ -284,6 +287,19 @@ def plot_cloropleth(df):
                                     visible=False)
     demand_location_plot.update_layout(transition_duration=400, 
                                       title_x=0.5)
+    
+    demand_location_plot.add_annotation(
+                                        xanchor="center",
+                                        yanchor='top',
+                                        yshift=160,
+                                        xshift=40,
+                                        font={'size':17},
+                                        text="<b>Demand of Data Jobs by Location</b>", # text
+                                        showarrow=False,
+                                        align="center",
+                                        bgcolor="rgba(0, 0, 0, 0)",
+
+)
  
     return demand_location_plot
 
@@ -306,9 +322,9 @@ def plot_boxplot(df):
                                                     'BI Analyst',
                                                     'Data Analyst']},
                             labels={
-                                    "Salary": "Average Monthly Salary (MXN)",
+                                    "Salary": "Mean Monthly Salary (MXN)",
                                     "Job": "Data Job Category"},
-                            title='Salary Per Data Job Category',
+                            title='<b>Salary Per Data Job Category</b>',
                             height=350
                             )
     salary_job_plot.update_traces(showlegend=False)
@@ -345,7 +361,7 @@ def plot_heatmap(df):
                                             histfunc="avg", 
                                             color_continuous_scale="Blues",
                                             height=500,
-                                            title='Salary Per Company And Data Job Category',
+                                            title='<b>Salary Per Company And Data Job Category</b>',
                                             labels={"Job": "Data Job Category"},                                         
                                             #text_auto=True
                                             )
@@ -429,7 +445,7 @@ def plot_contour(df):
                                               histfunc="avg", 
                                               color_discrete_sequence=px.colors.sequential.Blues_r,
                                               height=500,
-                                              title='Salary Per Location And Data Job Category',
+                                              title='<b>Salary Per Location And Data Job Category</b>',
                                               labels={
                                                         "State": "Location",
                                                         'Job': 'Data Job Category'
@@ -474,10 +490,10 @@ app.layout = html.Div(children=[
                                                             'height': '70px', 
                                                             'float': 'center',
                                                         }),
-                                                   html.H1('Data Jobs in Mexico Dashboard',
-                                                  style={'textAlign': 'center', 'color': '#0025a1',
+                                                   html.H1("Dashboard of Data Jobs in Mexico",
+                                                  style={'textAlign': 'center', 'color': '#3a3a3a', #'#0025a1',
                                                         'font-size': 40, 'font-family': 'Tahoma',
-                                                        'text-shadow': '0 0 10px #fff',
+                                                        'text-shadow': '0 0 15px #fff',
                                                         'margin-top': '-65px'
                                                         }),                                               
                                                     
@@ -485,7 +501,7 @@ app.layout = html.Div(children=[
                                                style={'margin-top': '-25px',
                                                       'width': '100%', 
                                                       'height': '110px', 
-                                                      'background-color': '#B3D5FA', 
+                                                      'background-color': '#B3D5FA', #'#C0C0C0', 
                                                       'float': 'center', 
                                                       }                                               
                                         ),
@@ -507,22 +523,8 @@ app.layout = html.Div(children=[
                                               
                                         ),
                                 
-                                # Adding Author
-                                html.P("By Daniel Eduardo López",
-                                        style={'textAlign': 'center', 'color': 'navy',
-                                               'font-size': 16, 'font-family': 'Tahoma'}),
-                                # dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez",
-                                #         style={'textAlign': 'center', 'color': 'navy',
-                                #                'font-size': 12, 'font-family': 'Tahoma',
-                                #                'margin': 'auto',
-                                #                'display': 'block'}),
-                                
-                                dcc.Link(html.A('LinkedIn'), href="https://www.linkedin.com/in/daniel-eduardo-lopez",
-                                        style={'textAlign': 'center', 'color': 'navy',
-                                               'font-size': 12, 'font-family': 'Tahoma',
-                                               'margin-top': '-5px',
-                                               'display': 'block'
-                                               }),
+                                html.Br(),
+                                html.Br(),
                                 
                                 # Second section: Dropdowns & Slider
                                 html.Div(children=[
@@ -692,7 +694,30 @@ app.layout = html.Div(children=[
                                               style={'textAlign': 'center', 'color': 'white',
                                                      'font-size': 13, 'font-family': 'Tahoma'}),
                                         ], style={'margin-top': '20px','margin-right': '5%'}
-                                  )                                      
+                                  ),    
+                                  
+                                  html.Div(children=[
+                                                                     # Adding Author
+                                        html.P("© Daniel Eduardo López",
+                                                style={'textAlign': 'center', 'color': 'navy',
+                                                      'font-size': 16, 'font-family': 'Tahoma'}),
+
+                                        dcc.Link(html.A('LinkedIn'), href="https://www.linkedin.com/in/daniel-eduardo-lopez",
+                                                style={'textAlign': 'center', 'color': 'navy',
+                                                      'font-size': 12, 'font-family': 'Tahoma',
+                                                      'margin-top': '-5px',
+                                                      'display': 'block'
+                                                      }),
+                                        dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez",
+                                                style={'textAlign': 'center', 'color': 'navy',
+                                                      'font-size': 12, 'font-family': 'Tahoma',
+                                                      'margin': 'auto',
+                                                      'display': 'block'}),
+
+                                          ], style={'margin-top': '70px','margin-right': '5%'}
+                                           
+                                           
+                                           ),                              
 
                                 ], id='left-container',
                                 style={'margin-top': '0px',
@@ -731,6 +756,8 @@ app.layout = html.Div(children=[
                                         ], id='card-container-1',
                                             style={'margin-top': '20px',
                                                   'margin-left': '2%',
+                                                  'border-color': dark_bg_color,
+                                                  'border-width': '2px',
                                                   #'width': '250px',
                                                   #'height': '100px',
                                                   }
@@ -751,6 +778,8 @@ app.layout = html.Div(children=[
                                         ], id='card-container-2',
                                             style={'margin-top': '-76px',
                                                   'margin-left': '19%',
+                                                  'border-color': dark_bg_color,
+                                                  'border-width': '2px',
                                                   #'width': '250px',
                                                   #'height': '100px',
                                                   }
@@ -777,7 +806,7 @@ app.layout = html.Div(children=[
                                                       dcc.Graph(id='salary_job_plot'),
                                               
                                               ], id='Boxplot',
-                                                style={'margin-top': '-470px',
+                                                style={'margin-top': '-500px',
                                                         'margin-left': '35.5%',
                                                         'width': '33%',
                                                         'height': '400px',                                                                                                            
@@ -790,10 +819,10 @@ app.layout = html.Div(children=[
                                                 # Location Demand Plot: Map
                                                 dcc.Graph(id='demand_location_plot'),
                                                 ], id='Map',
-                                                style={'margin-top': '-410px',
-                                                        'margin-left': '60.5%',
-                                                        'width': '40%',
-                                                        'height': '350px',
+                                                style={'margin-top': '-390px',
+                                                        'margin-left': '62%',
+                                                        'width': '39%',
+                                                        'height': '290px',
                                                         }
                                                 ),
                                     ], id='middle-container',
@@ -818,7 +847,7 @@ app.layout = html.Div(children=[
                                                 ], id='Treemap',
                                                 style={'margin-top': '60px',
                                                         'margin-left': '-1%',
-                                                        'width': '34%',
+                                                        'width': '33%',
                                                         'height': '720px',
                                                         }                                                
                                                 ),                                 
@@ -830,9 +859,9 @@ app.layout = html.Div(children=[
                                                     dcc.Graph(id='salary_company_plot'),
 
                                                     ], id='Heatmap',
-                                                    style={'margin-top': '-740px',
-                                                            'margin-left': '31%',
-                                                            'width': '36%',
+                                                    style={'margin-top': '-760px',
+                                                            'margin-left': '32%',
+                                                            'width': '35%',
                                                             'height': '600px',
                                                             }
                                                     ),
@@ -845,8 +874,8 @@ app.layout = html.Div(children=[
 
                                                     ], id='Contourmap',
                                                     style={'margin-top': '-600px',
-                                                            'margin-left': '65%',
-                                                            'width': '36%',
+                                                            'margin-left': '66%',
+                                                            'width': '35%',
                                                             'height': '600px',
                                                             }
                                                     ),
@@ -864,8 +893,8 @@ app.layout = html.Div(children=[
                                         'margin-left': '15%',
                                         'margin-right': '1px',
                                         'width': '85%',
-                                       'height': '820px',
-                                       'background-color': 'aliceblue', 
+                                       'height': '800px',
+                                       
                                        }
                                 ),
 
@@ -875,7 +904,7 @@ app.layout = html.Div(children=[
                            style={'width': '100%',
                                   'height': '100%',
                                   'overflow': 'hidden',
-                                  'background-color': 'aliceblue', #f2ffe3 soft green
+                                  'background-color': '#f0f0f0', #f2ffe3 soft green
                                  }
                         )
 
