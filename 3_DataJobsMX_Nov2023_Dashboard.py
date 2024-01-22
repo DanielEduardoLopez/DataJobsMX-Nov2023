@@ -66,7 +66,7 @@ def plot_pie_chart(df):
                             color = 'Job', 
                             hole = 0.7,  
                             color_discrete_sequence=dash_theme_r,
-                            height=250,
+                            height=280,
                             title='<b>Demand of Data Jobs Per Category</b>'
                             )
     
@@ -467,7 +467,7 @@ app.layout = html.Div(children=[
                                                    html.H1("Dashboard of Data Jobs in Mexico",
                                                   style={'textAlign': 'center', 'color': '#002c5b', #'#3a3a3a', #'#0025a1',
                                                         'font-size': 40, 'font-family': 'Tahoma',
-                                                        'text-shadow': '0 0 3px #848484',
+                                                        #'text-shadow': '0 0 3px #848484',
                                                         'margin-top': '-65px'
                                                         }),                                               
                                                     
@@ -661,14 +661,14 @@ app.layout = html.Div(children=[
                                         # html.P("This Dashboard shows the Data Jobs demand and salaries in Mexico in November 2023.",
                                         #                                           style={'textAlign': 'center', 'color': 'black',
                                         #                                                 'font-size': 14, 'font-family': 'Tahoma'}),
-                                      
-                                      html.P("Data source:",
+                                      #html.Br(),
+                                      html.P("Data Source:",
                                               style={'textAlign': 'center', 'color': 'white', 'font-weight': 'bold',
                                                      'font-size': 17, 'font-family': 'Tahoma'}),
-                                      html.P("Data was collected on 26 November 2023 from the OCC website.",
+                                      html.P("Data collected from OCC.com.mx on 26 November 2023.",
                                               style={'textAlign': 'center', 'color': 'white',
                                                      'font-size': 13, 'font-family': 'Tahoma'}),
-                                        ], style={'margin-top': '20px','margin-right': '5%'}
+                                        ], style={'margin-top': '30px','margin-right': '5%'}
                                   ),    
                                   
                                   html.Div(children=[
@@ -689,7 +689,7 @@ app.layout = html.Div(children=[
                                                       'margin': 'auto',
                                                       'display': 'block'}),
 
-                                          ], style={'margin-top': '70px','margin-right': '5%'}
+                                          ], style={'margin-top': '60px','margin-right': '5%'}
                                            
                                            
                                            ),                              
@@ -718,10 +718,11 @@ app.layout = html.Div(children=[
                                              
 
                                           html.Div(
-                                             html.Label(". Mean Monthly Salary", className='dropdown-labels',
-                                                              style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', 'text-shadow': '0 0 2px #fff',
-                                                              'font-size': 17, 'font-family': 'Tahoma', 'margin': 'auto'}
-                                                              ), style={'background-color': dark_bg_color, 'width': '200px',
+                                             html.Label("Mean Monthly Salary",
+                                                              style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', #'text-shadow': '0 0 2px #fff',
+                                                              'font-size': 17, 'font-family': 'Tahoma', 'margin-left': '5%'}
+                                                              ), style={'background-color': dark_bg_color, 
+                                                                        'width': '200px',
                                                                         'border-top-right-radius': '10px',
                                                                         'border-top-left-radius': '10px',
                                                                         }
@@ -745,9 +746,9 @@ app.layout = html.Div(children=[
                                                 ),
                                         html.Div([
                                           html.Div(
-                                             html.Label(". Number of Data Jobs", className='dropdown-labels',
-                                                              style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', 'text-shadow': '0 0 2px #fff',
-                                                              'font-size': 17, 'font-family': 'Tahoma'}
+                                             html.Label("Number of Data Jobs",
+                                                              style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', #'text-shadow': '0 0 2px #fff',
+                                                              'font-size': 17, 'font-family': 'Tahoma', 'margin-left': '5%'}
                                                               ), style={'background-color': dark_bg_color, 'width': '200px',
                                                                         'border-top-right-radius': '10px',
                                                                         'border-top-left-radius': '10px',
@@ -777,10 +778,10 @@ app.layout = html.Div(children=[
                                                 dcc.Graph(id='demand_job_plot'),                                   
                                         
                                                 ], id='Donut_chart',
-                                                  style={'margin-top': '25px',
+                                                  style={'margin-top': '10px',
                                                           'margin-left': '0px',
                                                           'width': '32%',
-                                                          'height': '270px',
+                                                          'height': '290px',
                                                           'box-shadow': '1px 1px 1px '+shadow_color,
                                                           'border-radius': '20px',    
                                                           'background-color': 'White',
@@ -840,8 +841,8 @@ app.layout = html.Div(children=[
 
                                                 ], id='Treemap',
                                                 style={'margin-top': '80px',
-                                                        'margin-left': '0%',
-                                                        'width': '32%',
+                                                        'margin-left': '0.5%',
+                                                        'width': '31.5%',
                                                         'height': '410px',
                                                         'box-shadow': '1px 1px 1px '+shadow_color,
                                                         'border-radius': '20px',    
