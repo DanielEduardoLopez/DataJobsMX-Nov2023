@@ -678,12 +678,14 @@ app.layout = html.Div(children=[
                                                       'font-size': 16, 'font-family': 'Tahoma'}),
 
                                         dcc.Link(html.A('LinkedIn'), href="https://www.linkedin.com/in/daniel-eduardo-lopez",
+                                                 target="_blank",
                                                 style={'textAlign': 'center', 'color': dash_theme_r[0],
                                                       'font-size': 12, 'font-family': 'Tahoma',
                                                       'margin-top': '-5px',
                                                       'display': 'block'
                                                       }),
                                         dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez/DataJobsMX-Nov2023",
+                                                 target="_blank",
                                                 style={'textAlign': 'center', 'color': dash_theme_r[0],
                                                       'font-size': 12, 'font-family': 'Tahoma',
                                                       'margin': 'auto',
