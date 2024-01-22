@@ -683,7 +683,7 @@ app.layout = html.Div(children=[
                                                       'margin-top': '-5px',
                                                       'display': 'block'
                                                       }),
-                                        dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez",
+                                        dcc.Link(html.A('GitHub'), href="https://github.com/DanielEduardoLopez/DataJobsMX-Nov2023",
                                                 style={'textAlign': 'center', 'color': dash_theme_r[0],
                                                       'font-size': 12, 'font-family': 'Tahoma',
                                                       'margin': 'auto',
