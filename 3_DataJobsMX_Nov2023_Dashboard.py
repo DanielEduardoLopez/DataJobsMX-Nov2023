@@ -116,7 +116,7 @@ def plot_card_salary(df):
 
     card_salary.update_layout(paper_bgcolor = "rgba(0,0,0,0)",
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
-                       width = 200,
+                       #width = 200,
                         height = 55,                        
                        margin = {'t': 5, 'r': 0, 'l': 0, 'b': 0}
                       )
@@ -145,7 +145,7 @@ def plot_card_demand(df):
 
     card_demand.update_layout(paper_bgcolor = "rgba(0,0,0,0)",
                         grid = {'rows': 1, 'columns': 1, 'pattern': "independent"},
-                       width = 200,
+                       #width = 200,
                         height = 55,
                        margin = {'t': 5, 'r': 0, 'l': 0, 'b': 0}
                       )
@@ -458,8 +458,8 @@ app.layout = html.Div(children=[
                                                    html.Br(),
                                                    html.Img(src=image_path,
                                                              style={
-                                                            'margin-top': '15px',
-                                                            'margin-left': '70%',
+                                                            'margin-top': '1%',
+                                                            'margin-left': '73%',
                                                             'width': '70px', 
                                                             'height': '70px', 
                                                             'float': 'center',
@@ -724,7 +724,7 @@ app.layout = html.Div(children=[
                                                               style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', #'text-shadow': '0 0 2px #fff',
                                                               'font-size': 17, 'font-family': 'Tahoma', 'margin-left': '5%'}
                                                               ), style={'background-color': dark_bg_color, 
-                                                                        'width': '200px',
+                                                                        'width': '100%',
                                                                         'border-top-right-radius': '10px',
                                                                         'border-top-left-radius': '10px',
                                                                         }
@@ -736,11 +736,11 @@ app.layout = html.Div(children=[
 
                                         ], id='card-container-1',
                                             style={'margin-top': '20px',
-                                                  'margin-left': '1%',
+                                                  'margin-left': '0%',
                                                   'background-color': 'white',
                                                   'border-width': '2px',
                                                   'box-shadow': '1px 1px 1px '+shadow_color,
-                                                  'width': '200px',
+                                                  'width': '15.5%',
                                                   #'height': '100px',
                                                   'border-radius': '10px',
                                                   }
@@ -751,7 +751,7 @@ app.layout = html.Div(children=[
                                              html.Label("Number of Data Jobs",
                                                               style={'textAlign': 'center', 'color': 'white','font-weight': 'bold', #'text-shadow': '0 0 2px #fff',
                                                               'font-size': 17, 'font-family': 'Tahoma', 'margin-left': '5%'}
-                                                              ), style={'background-color': dark_bg_color, 'width': '200px',
+                                                              ), style={'background-color': dark_bg_color, 'width': '100%',
                                                                         'border-top-right-radius': '10px',
                                                                         'border-top-left-radius': '10px',
                                                                         }
@@ -763,11 +763,11 @@ app.layout = html.Div(children=[
 
                                         ], id='card-container-2',
                                             style={'margin-top': '-76px',
-                                                  'margin-left': '17%',
+                                                  'margin-left': '16.5%',
                                                   'background-color': 'white',
                                                   'border-width': '2px',
                                                   'box-shadow': '1px 1px 1px '+shadow_color,
-                                                  'width': '200px',                                                  
+                                                  'width': '15.5%',                                                  
                                                   #'height': '100px',
                                                   'border-radius': '10px',
                                                   }
@@ -1058,4 +1058,4 @@ def update_output(job, location, company, salary, salary_filter):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
