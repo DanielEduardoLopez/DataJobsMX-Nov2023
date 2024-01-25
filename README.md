@@ -56,8 +56,8 @@ The methodology of the present study is based on Rollin’s Foundational Methodo
 4) **Data exploration**: Data was explored with Python 3 and its libraries Matplotlib and Seaborn.
 5) **Data preparation**:  Data then was cleaned with Python 3 and its libraries Pandas and Numpy.
 6) **Data analysis**: Data was analyzed with Python 3 and its libraries Pandas, Scipy and Statsmodels and visualized with Matplotlib, Seaborn, Folium and Plotly. 
-7) **Statistical analysis**: The D'Agostino-Pearson normality test was used to assess the normality of the data jobs salary distribution. Then, both parametric (ANOVA, Tukey-Kramer and one-sample and two-sample T-tests with unequal variance) and non-parametric (Kruskal-Wallis H, Dunn and Mann-Whitney U) tests were carried out to assess the significance of the obtained results. Furthermore, an effect size analysis was carried out by computing the absolute mean salary differences, the Cohen’s d, and the bootstrap confidence intervals for the mean for each data job category. This, in order to assess whether the salary differences were significant from a practical point of view.
-8) **Implementation**:  A <a href="https://data-jobs-mx-2023.onrender.com"><b>dashboard</b></a> was built with Plotly and Dash and it was deployed on Render.
+7) **Statistical analysis**: The D'Agostino-Pearson normality test was used to assess the normality of the data jobs salary distribution. Then, both parametric (ANOVA, Tukey-Kramer, one-sample, and two-sample T-tests) and non-parametric (Kruskal-Wallis H, Dunn, Wilcoxon signed-rank, and Mann-Whitney U) tests were carried out to assess the significance of the obtained results. Furthermore, an effect size analysis was carried out by computing the absolute mean salary differences, the Cohen’s d, and the bootstrap confidence intervals for the mean for each data job category. This, in order to assess whether the salary differences were significant from a practical point of view.
+8) **Implementation**:  A <a href="https://data-jobs-mx-nov2023.onrender.com"><b>dashboard</b></a> was built with Plotly and Dash and it was deployed on Render.
 
 Furthermore:
 
@@ -160,8 +160,19 @@ Please refer to the **[Complete Report](https://github.com/DanielEduardoLopez/Da
 ___
 ### **7. Dashboard** <a class="anchor" id="dashboard"></a>
 
-Pending.
+To view and play with the **interactive dashboard**, please visit this **[link](https://data-jobs-mx-nov2023.onrender.com)**.
 
+<p align="center">
+	<img src="Figures/Dashboard.png?raw=true" width=65% height=65%>
+</p>
+
+Or, if you prefer to deploy the app locally, please download the **[app](https://github.com/DanielEduardoLopez/DataJobsMX-Nov2023/blob/main/3_DataJobsMX_Nov2023_Dashboard.py)** into a directory of your choice. Then, run the app using the following command in Windows:
+```bash
+python 3_DataJobsMX_Nov2023_Dashboard.py
+```
+And visit http://127.0.0.1:8050/ in your web browser.
+
+Please note that Python 3 and its libraries Numpy, Pandas, Plotly and Dash are required for properly running the dashboard.
 
 ___
 ### **8. Conclusions** <a class="anchor" id="conclusions"></a>
