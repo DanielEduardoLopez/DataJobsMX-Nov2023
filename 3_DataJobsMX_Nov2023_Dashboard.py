@@ -368,71 +368,20 @@ def plot_heatmap(df):
 # Salary Per Location: Contour plot
 def plot_contour(df):
 
-    # States dictionary with corresponding ID
-    location_dict = {'Aguascalientes': 'AS', 
-                'Baja California': 'BC', 
-                'Baja California Sur': 'BS', 
-                'Campeche': 'CC',
-                'Ciudad de México':'DF',
-                'Chiapas': 'CS',
-                'Chihuahua':'CH',
-                'Coahuila':'CL',
-                'Colima':'CM',
-                'Durango':'DG',
-                'Estado de México':'MC',
-                'Guanajuato':'GT',
-                'Guerrero':'GR',
-                'Hidalgo':'HG',
-                'Jalisco':'JC',
-                'Michoacán':'MN',
-                'Morelos':'MS',
-                'Nayarit':'NT',
-                'Nuevo León':'NL',
-                'Oaxaca':'OC',
-                'Puebla':'PL',
-                'Querétaro':'QT',
-                'Quintana Roo':'QR',
-                'San Luis Potosí':'SP',
-                'Sinaloa':'SL',
-                'Sonora':'SR',
-                'Tabasco':'TC',
-                'Tamaulipas':'TS',
-                'Tlaxcala':'TL',
-                'Veracruz':'VZ',
-                'Yucatán':'YN',
-                'Zacatecas':'ZS'}
+    salary_location_df = (pd.pivot_table(df, index = 'Location', columns = 'Job', values = 'Salary', aggfunc= 'mean')
+                        .assign(Total_Average= lambda d: d.mean(axis=1, numeric_only= True))
+                        .fillna(0).sort_values('Total_Average', ascending = True)                                                                                              
+                        .drop(columns = 'Total_Average').reset_index()
+                        )   
+    
+    salary_location_df = pd.melt(salary_location_df, id_vars = 'Location', var_name = 'Job', value_name = 'Salary')
 
-    location_df = (pd.DataFrame.from_dict(location_dict, orient='index')
-                  .reset_index().rename(columns={"index": "State", 0: "ID"})
-                  .set_index('State')
-                    )
-
-    demand = (pd.DataFrame(df['Location'].value_counts())
-              .reset_index()
-              .rename(columns={'count':'Count', 'Location':'State'})
-              .assign(total= lambda d: sum(d.Count))
-              .assign(Percentage= lambda d: (d['Count'] / d.total )*100)
-              .drop(columns=['total'])
-              )
-
-    location_df = location_df.merge(demand, left_on='State', right_on='State', how = 'outer').fillna(0)
-
-    salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
-
-    salary_location_df = (pd.pivot_table(data = salary_job_df, index = 'Location', columns = 'Job', values = 'Salary', aggfunc= 'mean')
-                          .reset_index().merge(location_df, left_on='Location', right_on='State', how = 'outer')
-                          .set_index('State').drop(columns =['ID', 'Count', 'Percentage', 'Location']).fillna(0)
-                          .sort_values('State', ascending = False).reset_index()
-                        )
-
-    salary_location_df = pd.melt(salary_location_df, id_vars= 'State', var_name = 'Job', value_name = 'Salary')
-
-    salary_location_plot = px.density_contour(salary_location_df, 
-                                              y='State', 
+    salary_location_plot = px.density_heatmap(salary_location_df, 
+                                              y='Location', 
                                               x='Job', 
                                               z='Salary',
                                               histfunc="avg", 
-                                              color_discrete_sequence=dash_theme_r,
+                                              color_continuous_scale=dash_theme,
                                               height=440,
                                               title='<b>Salary Per Location And Data Job Category</b>',
                                               labels={
@@ -440,20 +389,17 @@ def plot_contour(df):
                                                         'Job': ''
                                                         }
                                                 )
-
-    salary_location_plot.update_traces(contours_coloring="fill", 
-                                      contours_showlabels = True, 
-                                      colorscale = dash_theme, 
-                                      colorbar_tickformat='$,~s',
-                                      colorbar_title_text='Avg. Mth. <br>Salary (MXN)')
-
+    
     salary_location_plot.update_layout(transition_duration=400, 
                                       title_x=0.5, 
-                                      coloraxis_colorbar=dict(title="Vacancies"),
+                                      coloraxis_colorbar=dict(title="Avg. Mth. <br>Salary (MXN)"),
                                       paper_bgcolor="rgba(0,0,0,0)", 
                                       plot_bgcolor="rgba(0,0,0,0)",
                                       margin={"r":20,"t":50,"l":20,"b":40}
                                       )
+
+    salary_location_plot.update_coloraxes(colorbar_tickformat = '$,~s')
+    #salary_location_plot.update_traces(texttemplate="$%{z:,.0f}")
 
     return salary_location_plot
 
