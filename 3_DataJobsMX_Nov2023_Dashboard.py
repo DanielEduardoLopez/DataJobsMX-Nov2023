@@ -169,20 +169,29 @@ def plot_treemap(df):
     demand_company_plot = px.treemap(company_df, 
                                      path = ['Company'], 
                                      values='Vacancies', 
-                                     color = 'Vacancies',                                      
-                                     color_continuous_scale=dash_theme,                                     
+                                     #color = 'Vacancies',                                      
+                                     color_discrete_sequence=['rgb(8,48,107)', 
+                                                              'rgb(8,81,156)', 
+                                                              'rgb(33,113,181)', 
+                                                              'rgb(66,146,198)', 
+                                                              'rgb(107,174,214)', 
+                                                              'rgb(158,202,225)', 
+                                                              'rgb(198,219,239)', 
+                                                              'rgb(222,235,247)', 
+                                                              'rgb(247,251,255)', 
+                                                              'rgb(247,251,255)'],                                     
                                      title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
                                      height= 380,
                                      #width = 450,                                     
 
                                     )
     
-    demand_company_plot.update_traces(root_color="white")
+    demand_company_plot.update_traces(root_color="rgba(0,0,0,0)")
     
     demand_company_plot.update_layout(transition_duration=400, 
                                       paper_bgcolor="rgba(0,0,0,0)", 
                                       plot_bgcolor="rgba(0,0,0,0)",                                      
-                                      margin={"r":0,"t":80,"l":20,"b":20}
+                                      margin={"r":20,"t":80,"l":20,"b":20}
                                       )
               
     return demand_company_plot
@@ -245,10 +254,10 @@ def plot_cloropleth(df):
                                         color_continuous_scale=dash_theme,
                                         scope="north america",
                                         height= 370,
-                                        #title='Demand of Data Jobs per Mexican State',
+                                        #title='Demand of Data Jobs per Mexican State',                                        
                                         labels={'Percentage':'National <br>Demand %'}
                                         )
-     
+        
     demand_location_plot.update_geos(fitbounds="locations", 
                                     visible=False)
     
@@ -302,8 +311,8 @@ def plot_boxplot(df):
     salary_job_plot.update_layout(transition_duration=400, 
                                   title_x=0.5, 
                                   paper_bgcolor="rgba(0,0,0,0)", 
-                                  plot_bgcolor='#efefef',
-                                  margin={"r":0,"t":50,"l":40,"b":0})
+                                  plot_bgcolor='#E5E4E2',
+                                  margin={"r":10,"t":50,"l":40,"b":0})
     
 
     salary_job_plot.update_xaxes(
@@ -323,7 +332,7 @@ def plot_boxplot(df):
 
     return salary_job_plot
 
-# Salary Per Company: Heatmap
+# Salary Per Company: Heatmap plot 1
 
 def plot_heatmap(df):
 
@@ -332,11 +341,13 @@ def plot_heatmap(df):
     salary_job_df = df.dropna(axis = 0, how='any', subset = ['Salary'])
 
     salary_company_df = (pd.pivot_table(salary_job_df, index = 'Company', columns = 'Job', values = 'Salary', aggfunc= 'mean')
-                        .assign(Total_Average= lambda d: d.mean(axis=1, numeric_only= True))
-                        .fillna(0).sort_values('Total_Average', ascending = False)[:top]                                                
+                        .assign(Max_Value= lambda d: d.max(axis=1, numeric_only= True))
+                        .reset_index()
+                        .assign(Company= lambda d: d.Company.str[:20])
+                        .fillna(0).sort_values('Max_Value', ascending = False)[:top]                                                
                         .rename(index = {'Job': 'Index'})
-                        .sort_values('Total_Average', ascending = True)
-                        .drop(columns = 'Total_Average').reset_index()
+                        .sort_values('Max_Value', ascending = True)
+                        .drop(columns = 'Max_Value')
                         )                  
 
     salary_company_df = pd.melt(salary_company_df, id_vars = 'Company', var_name = 'Job', value_name = 'Salary')
@@ -348,7 +359,7 @@ def plot_heatmap(df):
                                             histfunc="avg", 
                                             color_continuous_scale=dash_theme,
                                             height=440,
-                                            title='<b>Salary Per Company And Data Job Category</b>',
+                                            title='<b>Salary Per Company And Data Job</b>',
                                             labels={"Job": ""},                                         
                                             #text_auto=True
                                             )
@@ -365,13 +376,13 @@ def plot_heatmap(df):
 
     return salary_company_plot
 
-# Salary Per Location: Contour plot
+# Salary Per Location: Heatmap plot 2
 def plot_contour(df):
 
     salary_location_df = (pd.pivot_table(df, index = 'Location', columns = 'Job', values = 'Salary', aggfunc= 'mean')
-                        .assign(Total_Average= lambda d: d.mean(axis=1, numeric_only= True))
-                        .fillna(0).sort_values('Total_Average', ascending = True)                                                                                              
-                        .drop(columns = 'Total_Average').reset_index()
+                        .assign(Max_Value= lambda d: d.max(axis=1, numeric_only= True))
+                        .fillna(0).sort_values('Max_Value', ascending = True)                                                                                              
+                        .drop(columns = 'Max_Value').reset_index()
                         )   
     
     salary_location_df = pd.melt(salary_location_df, id_vars = 'Location', var_name = 'Job', value_name = 'Salary')
@@ -383,7 +394,7 @@ def plot_contour(df):
                                               histfunc="avg", 
                                               color_continuous_scale=dash_theme,
                                               height=440,
-                                              title='<b>Salary Per Location And Data Job Category</b>',
+                                              title='<b>Salary Per Location And Data Job</b>',
                                               labels={
                                                         "State": "Location",
                                                         'Job': ''
