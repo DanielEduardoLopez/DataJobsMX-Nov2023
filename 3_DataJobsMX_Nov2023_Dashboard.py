@@ -818,7 +818,7 @@ app.layout = html.Div(children=[
                                                 # Fifth Plot
                                                 html.Div(children=[
 
-                                                    # Company-Salary Plot: Heatmap
+                                                    # Company-Salary Plot: 1° Heatmap
                                                     dcc.Graph(id='salary_company_plot'),
 
                                                     ], id='Heatmap',
@@ -835,7 +835,7 @@ app.layout = html.Div(children=[
                                               #Sixth Plot
                                               html.Div(children=[
 
-                                                    # Location-Salary Plot: Contourmap
+                                                    # Location-Salary Plot: 2° Heatmap
                                                     dcc.Graph(id='salary_location_plot'),
 
                                                     ], id='Contourmap',
