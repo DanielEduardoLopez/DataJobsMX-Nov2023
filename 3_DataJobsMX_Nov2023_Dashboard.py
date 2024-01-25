@@ -167,22 +167,24 @@ def plot_treemap(df):
     company_df = company_df[company_df['Vacancies'] > 0]
 
     demand_company_plot = px.treemap(company_df, 
-                                     path = [px.Constant("."), 'Company'], 
+                                     path = ['Company'], 
                                      values='Vacancies', 
-                                     color = 'Vacancies', 
-                                     color_continuous_scale=dash_theme,
+                                     color = 'Vacancies',                                      
+                                     color_continuous_scale=dash_theme,                                     
                                      title= f'<b>Top {top} Companies Demanding Data Jobs</b>',
                                      height= 380,
-                                     #width = 450,
+                                     #width = 450,                                     
 
                                     )
     
+    demand_company_plot.update_traces(root_color="white")
+    
     demand_company_plot.update_layout(transition_duration=400, 
                                       paper_bgcolor="rgba(0,0,0,0)", 
-                                      plot_bgcolor="rgba(0,0,0,0)",
+                                      plot_bgcolor="rgba(0,0,0,0)",                                      
                                       margin={"r":0,"t":80,"l":20,"b":20}
                                       )
-      
+              
     return demand_company_plot
 
 # Location Demand: Choropleth Map
@@ -280,16 +282,16 @@ def plot_boxplot(df):
     salary_job_plot = px.box(salary_job_df, 
                             x = "Job", 
                             y = "Salary", 
-                            color = "Job", 
+                            #color = "Job", 
                             points="all", 
-                            color_discrete_sequence=dash_theme_r,
-                            category_orders={"Job": ['ML Engineer',
-                                                    'Data Architect', 
-                                                    'Data Engineer', 
-                                                    'Data Scientist', 
-                                                    'Business Analyst', 
-                                                    'BI Analyst',
-                                                    'Data Analyst']},
+                            color_discrete_sequence=['#2874a6'],
+                            # category_orders={"Job": ['ML Engineer',
+                            #                         'Data Architect', 
+                            #                         'Data Engineer', 
+                            #                         'Data Scientist', 
+                            #                         'Business Analyst', 
+                            #                         'BI Analyst',
+                            #                         'Data Analyst']},
                             labels={
                                     "Salary": "Mean Monthly Salary (MXN)",
                                     "Job": "Data Job Category"},
@@ -300,9 +302,24 @@ def plot_boxplot(df):
     salary_job_plot.update_layout(transition_duration=400, 
                                   title_x=0.5, 
                                   paper_bgcolor="rgba(0,0,0,0)", 
-                                  plot_bgcolor='#e1e7ff',
+                                  plot_bgcolor='#efefef',
                                   margin={"r":0,"t":50,"l":40,"b":0})
-    salary_job_plot.update_yaxes(tickformat = '$,~s')
+    
+
+    salary_job_plot.update_xaxes(
+                                  #mirror=True,
+                                  #ticks='outside',
+                                  #showline=True,
+                                  #linecolor='white',                                  
+                              )
+
+    salary_job_plot.update_yaxes(tickformat = '$,~s',
+                                  #mirror=True,
+                                  #ticks='outside',
+                                  #showline=True,
+                                  #linecolor='white',
+                                  #gridcolor='white'
+                              )
 
     return salary_job_plot
 
@@ -316,10 +333,10 @@ def plot_heatmap(df):
 
     salary_company_df = (pd.pivot_table(salary_job_df, index = 'Company', columns = 'Job', values = 'Salary', aggfunc= 'mean')
                         .assign(Total_Average= lambda d: d.mean(axis=1, numeric_only= True))
-                        .fillna(0).sort_values('Total_Average', ascending = False)[:top]
-                        .sort_values('Company', ascending = False)
-                        .drop(columns = 'Total_Average').reset_index()
+                        .fillna(0).sort_values('Total_Average', ascending = False)[:top]                                                
                         .rename(index = {'Job': 'Index'})
+                        .sort_values('Total_Average', ascending = True)
+                        .drop(columns = 'Total_Average').reset_index()
                         )                  
 
     salary_company_df = pd.melt(salary_company_df, id_vars = 'Company', var_name = 'Job', value_name = 'Salary')
