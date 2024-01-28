@@ -56,7 +56,7 @@ The methodology of the present study is based on Rollin’s Foundational Methodo
 4) **Data exploration**: Data was explored with Python 3 and its libraries Matplotlib and Seaborn.
 5) **Data preparation**:  Data then was cleaned with Python 3 and its libraries Pandas and Numpy.
 6) **Data analysis**: Data was analyzed with Python 3 and its libraries Pandas, Scipy and Statsmodels and visualized with Matplotlib, Seaborn, Folium and Plotly. 
-7) **Statistical analysis**: The D'Agostino-Pearson normality test was used to assess the normality of the data jobs salary distribution. Then, both parametric (ANOVA, Tukey-Kramer, one-sample, and two-sample T-tests) and non-parametric (Kruskal-Wallis H, Dunn, Wilcoxon signed-rank, and Mann-Whitney U) tests were carried out to assess the significance of the obtained results. Furthermore, an effect size analysis was carried out by computing the absolute mean salary differences, the Cohen’s d, and the bootstrap confidence intervals for the mean for each data job category. This, in order to assess whether the salary differences were significant from a practical point of view.
+7) **Statistical analysis**: The D'Agostino-Pearson normality test was used to assess the normality of the data jobs salary distribution. Then, both parametric (ANOVA, Tukey-Kramer, one-sample and two-sample T-tests) and non-parametric (Kruskal-Wallis H, Dunn, Wilcoxon signed-rank, and Mann-Whitney U) tests were carried out to assess the significance of the obtained results. Furthermore, an effect size analysis was carried out by computing the absolute mean salary differences, the Cohen’s d, and the bootstrap confidence intervals for the mean for each data job category. This, in order to assess whether the salary differences were significant from a practical point of view.
 8) **Implementation**:  A <a href="https://data-jobs-mx-nov2023.onrender.com"><b>dashboard</b></a> was built with Plotly and Dash and it was deployed on Render.
 
 Furthermore:
@@ -216,8 +216,12 @@ ___
 File | Description
 :--- | :---
 1_DataJobsMX_Nov2023_DataCollection.ipynb | Jupyter notebook for collecting the data through the web scraping.
+1_DataJobsMX_Nov2023_DataCollection.html | HTML version of the Jupyter notebook for collecting the data through the web scraping.
 2_DataJobsMX_Nov2023_DataAnalysis.ipynb | Jupyter Notebook for performing the data exploration, preparation, visualization and statistical analysis.
+2_DataJobsMX_Nov2023_DataAnalysis.html |  HTML version of the Jupyter Notebook for performing the data exploration, preparation, visualization and statistical analysis.
+3_DataJobsMX_Nov2023_Dashboard.py | Python script for the interactive dashboard.
 Dataset_processed.csv | CSV file with the cleaned dataset.
 Dataset_raw.csv | CSV file with the raw data collected from web scraping.
 requirements.txt | Python requirements file
+Slides.pdf | Slides with the most important insights from this project.
 
