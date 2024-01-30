@@ -222,6 +222,7 @@ File | Description
 3_DataJobsMX_Nov2023_Dashboard.py | Python script for the interactive dashboard.
 Dataset_processed.csv | CSV file with the cleaned dataset.
 Dataset_raw.csv | CSV file with the raw data collected from web scraping.
+Report.pdf | Full report.
 requirements.txt | Python requirements file
 Slides.pdf | Slides with the most important insights from this project.
 
